@@ -87,4 +87,18 @@ class StudentPaymentController extends Controller
         $monthly->save();
         return redirect()->route('mensualidad.index');
     }
+
+    public function search(Request $request){
+        $palabra = $request->buscar;
+        if($palabra == ''){
+            $monthlypayments = MonthlyPayment::select('idmonthly_payment','start_date','end_date','description')->where('state','=',1)  
+                        ->orderBy('idmonthly_payment','desc')->paginate(5);
+        }else{
+            $monthlypayments = MonthlyPayment::select('idmonthly_payment','start_date','end_date','description')
+                    ->where('idmonthly_payment', 'like', '%'.$palabra.'%')->orWhere('start_date','like','%'.$palabra.'%')->orWhere('end_date','like','%'.$palabra.'%')->orWhere('description','like','%'.$palabra.'%')->andWhere('state','=',1)->paginate(8);
+        }
+        return [
+            'monthlypayments' => $monthlypayments
+        ];
+    }
 }

@@ -57,9 +57,10 @@ Route::get('email/resend', 'Auth\VerificationController@resend')->name('verifica
 
 Route::resource('pensiones','PensionController');
 
-Route::resource('mensualidad','MonthlyPaymentController');
+Route::resource('mensualidad','MonthlyPaymentController', ['except' => ['show']]);
 Route::put('mensualidad/activar/{id}','MonthlyPaymentController@active');
 Route::put('mensualidad/desactivar/{id}','MonthlyPaymentController@desactive');
 Route::resource('pagos','StudentPaymentController');
 Route::get('obtener/mensualidades', 'StudentPaymentController@getMonthly');
 Route::get('obtener/estudiante/{ci}','StudentPaymentController@getStudent');
+Route::get('mensualidad/buscar','StudentPaymentController@search');
