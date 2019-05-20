@@ -277,15 +277,7 @@
         $('#modal-mensualidades').modal('hide');
         $('#id_mensualidad').val(id);
         $('#description-1').val(descripcion);
-        let juntar2;
-        for (var i = 0;i<mensualidades.length;i++) {
-            juntar2+=`<tr>
-              <td> ${mensualidades[i].mensualidad_id} </td>
-              <td> ${mensualidades[i].descripcion} </td>
-          </tr>`;
-        }
-        $('#llenado').html(juntar2);
-        console.log(mensualidades);
+        juntarLlenado();
       }
   });
   function verificarRepetido(id){
@@ -296,6 +288,32 @@
       }
     }
     return sw;
+  }
+
+  $('#llenado').on("click","button.eliminar-lista",function(){
+    let id = $(this).data('indice');
+    console.log(id);
+    mensualidades.splice(id,1);
+    juntarLlenado();
+  });
+  function juntarLlenado(){
+    let juntar2;
+    for (var i = 0;i<mensualidades.length;i++) {
+        juntar2+=`<tr>
+          <td> ${mensualidades[i].mensualidad_id} </td>
+          <td> ${mensualidades[i].descripcion} </td>
+          <td> hola </td>
+          <td>
+            <button type="button" class="btn btn-danger btn-xs eliminar-lista modal-ml"
+                data-id="${mensualidades[i].id}"
+                data-indice="${i}">
+                <i class="glyphicon glyphicon-plus"></i>
+            </button>
+          </td>
+      </tr>`;
+    }
+    $('#llenado').html(juntar2);
+    console.log(mensualidades);
   }
 </script>
 @endsection
