@@ -4,7 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Teacher;
 use App\User;
+use App\Http\Requests;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
+use DB;
 use Illuminate\Support\Facades\Input;
 
 class TeacherController extends Controller
@@ -16,11 +19,9 @@ class TeacherController extends Controller
      */
     public function index()
     {
-        $user = User::where('id_rol','=',2)->get();
-        $teacher = Teacher::all();
+        $users = DB::table('users')->where('id_rol','=',2)->where('estate','=',1)->get();
         return view('teachers.index',[
-            'user' => $user,
-            'teacher' => $teacher
+            'users' => $users
         ]);
     }
 
@@ -55,19 +56,19 @@ class TeacherController extends Controller
         $user->ci = $request->ci;
         $user->cellphone = $request->cellphone;
         $user->phone = $request->phone;
-        //$user->save();
+        $user->save();
 
         $teacher = new Teacher();
         $user_id = User::where("ci","=",$user->ci)->first();
 
-        $teacher->id_user = $user_id;
+        $teacher->id_user = $user_id->iduser;
         $teacher->specialty = $request->speciality;
+        $teacher->num_item = $request->numberItem;
         if(Input::hasFile('cv')){
-            $file=Input::file('cv');
-            $file->move(public_path().'/documents/teachers/',$file->getClientOriginalName());
-            $teacher->cv = $file;
+            $file = Input::file('cv');
+            $file->move(public_path().'\documents\teachers',$file->getClientOriginalName());
+            $teacher->cv=$file->getClientOriginalName();
         }
-
         $teacher->teachercol = $request->teacherSchool;
         $teacher->save();
 
@@ -91,9 +92,14 @@ class TeacherController extends Controller
      * @param  \App\Teacher  $teacher
      * @return \Illuminate\Http\Response
      */
-    public function edit(Teacher $teacher)
+    public function edit( $id)
     {
-        //
+        $user = User::findOrFail($id);
+        $teacher = DB::table('teachers')->where('id_user','=',$id)->first();
+        return view('teachers.edit',[
+            'user' => $user,
+            'teacher' => $teacher
+        ]);
     }
 
     /**
@@ -103,9 +109,24 @@ class TeacherController extends Controller
      * @param  \App\Teacher  $teacher
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Teacher $teacher)
+    public function update(Request $request,  $id)
     {
-        //
+        $user = User::findOrFail($id);
+        $user->name = $request->name;
+        $user->paternal = $request->paternal;
+        $user->maternal = $request->maternal;
+        $user->address = $request->address;
+        $user->email = $request->email;
+        $user->cellphone = $request->cellphone;
+        $user->phone = $request->phone;
+        $user->update();
+
+        $teacher = Teacher::where('id_user','=',$id)->first();
+        //$teacher = DB::table('teachers')->where('id_user','=',$id)->first(); ///////////////esto no genera un modelo eloquen por lo que no nos deja actualizar
+        $teacher->specialty = $request->speciality;
+        $teacher->teachercol = $request->teacherSchool;
+        $teacher->save();
+        return redirect()->route('teacher.index');
     }
 
     /**
@@ -114,8 +135,11 @@ class TeacherController extends Controller
      * @param  \App\Teacher  $teacher
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Teacher $teacher)
+    public function destroy( $teacher)
     {
-        //
+        $teacher = User::findOrFail($teacher);
+        $teacher->estate = 0;
+        $teacher->update();
+        return redirect()->route('teacher.index');
     }
 }

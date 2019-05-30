@@ -36,7 +36,7 @@
         <div class="container-fluid">
             <div class="container-flat-form">
                 <div class="title-flat-form title-flat-blue">Registrar un nuevo docente</div>
-                <form method="POST" action="{{ route('teacher.store')}}">
+                <form method="POST" action="{{ route('teacher.store')}}" enctype="multipart/form-data" target="_blank">
                 	@csrf
                     <div class="row">
                        <div class="col-xs-12 col-sm-8 col-sm-offset-2">
@@ -86,7 +86,7 @@
                                 <label>CI</label>
                             </div>
                             <div class="group-material">
-                                <input type="text" class="material-control tooltips-general" placeholder="Escribe aquí el número de celular del docente" pattern="[0-9]{1,8}" required="" maxlength="8" data-toggle="tooltip" data-placement="top" title="Solamente 8 números" name="cellphone">
+                                <input type="text" class="material-control tooltips-general" placeholder="Escribe aquí el número de celular del docente" pattern="[0-9]{1,8}" maxlength="8" data-toggle="tooltip" data-placement="top" title="Solamente 8 números" name="cellphone">
                                 <span class="highlight"></span>
                                 <span class="bar"></span>
                                 <label>Teléfono Celular</label>
@@ -112,21 +112,21 @@
                             </div>
 
                             <div class="group-material">
-                                <input type="text" class="material-control tooltips-general" placeholder="Escribe aquí el numero de item del docente" pattern="[a-zA-ZáéíóúÁÉÍÓÚñÑ0-9 ]{1,30}"required="" maxlength="30" data-toggle="tooltip" data-placement="top" title="Numero de item de trabajo" name="numberItem">
+                                <input type="text" class="material-control tooltips-general" placeholder="Escribe aquí el numero de item del docente" pattern="[a-zA-ZáéíóúÁÉÍÓÚñÑ0-9 ]{1,30}" maxlength="30" data-toggle="tooltip" data-placement="top" title="Numero de item de trabajo" name="numberItem">
                                 <span class="highlight"></span>
                                 <span class="bar"></span>
                                 <label>Numero item</label>
                             </div>
 
                             <div class="group-material">
-                                <input type="file" class="material-control tooltips-general"  required="" data-toggle="tooltip" data-placement="top" title="Documento PDF" name="cv">
+                                <input type="file" class="material-control tooltips-general"  required="" title="Documento PDF" name="cv">
                                 <span class="highlight"></span>
                                 <span class="bar"></span>
                                 <label>Documento PDF</label>
                             </div>
 
                             <div class="group-material">
-                                <input type="text" class="material-control tooltips-general" placeholder="Escribe aquí el colegio del docente" pattern="[a-zA-ZáéíóúÁÉÍÓÚñÑ0-9 ]{1,40}" required="" maxlength="40" data-toggle="tooltip" data-placement="top" title="Colegio de docente" name="teacherSchool">
+                                <input type="text" class="material-control tooltips-general" placeholder="Escribe aquí el colegio del docente" pattern="[a-zA-ZáéíóúÁÉÍÓÚñÑ ]{1,40}" required="" maxlength="40" data-toggle="tooltip" data-placement="top" title="Colegio de docente" name="teacherSchool">
                                 <span class="highlight"></span>
                                 <span class="bar"></span>
                                 <label>Docente colegio</label>

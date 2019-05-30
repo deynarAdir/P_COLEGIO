@@ -57,33 +57,29 @@
                         <div class="div-table-cell" style="width: 9%;">Eliminar</div>
                     </div>
                 </div>
-                @foreach($user as $us)
-	                @foreach($teacher as $tea)
-	                	@if($us->iduser == $tea->id_user && $us->estate == 1)
-		                <div class="table-responsive">
-		                    <div class="div-table" style="margin:0 !important;">
-		                        <div class="div-table-row div-table-row-list">
-		                            <div class="div-table-cell" style="width: 6%;">{{$tea->idteacher}}</div>
-		                            <div class="div-table-cell" style="width: 15%;">{{$us->name}}</div>
-		                            <div class="div-table-cell" style="width: 15%;">{{$us->paternal}} </div>
-		                            <div class="div-table-cell" style="width: 15%;">{{$us->ci}}</div>
-		                            <div class="div-table-cell" style="width: 15%;">{{$tea->specialty}}</div>
-		                            <div class="div-table-cell" style="width: 12%;">{{$us->cellphone}}</div>
-		                            <div class="div-table-cell" style="width: 9%;">
-		                                <a class="btn btn-success" href="{{ route('teacher.edit', $tea->id_user)}}"><i class="zmdi zmdi-refresh"></i></a>
-		                            </div>
-		                            <div class="div-table-cell" style="width: 9%;">
-		                            	<form method="POST" action="{{ route('teacher.destroy', $tea->idteacher)}}">
-		                            		@csrf
-		                            		@method('DELETE')
-		                            	    <button class="btn btn-danger" onclick="return confirm('Esta seguro de eliminar el registro?')"><i class="zmdi zmdi-delete"></i></button>
-		                            	</form>
-		                            </div>
+                @foreach($users as $us)
+		            <div class="table-responsive">
+		                <div class="div-table" style="margin:0 !important;">
+		                    <div class="div-table-row div-table-row-list">
+		                        <div class="div-table-cell" style="width: 6%;">{{1}}</div>
+	                            <div class="div-table-cell" style="width: 15%;">{{$us->name}}</div>
+	                            <div class="div-table-cell" style="width: 15%;">{{$us->paternal}} </div>
+		                        <div class="div-table-cell" style="width: 15%;">{{$us->ci}}</div>
+		                        <div class="div-table-cell" style="width: 15%;">{{2}}</div>
+		                        <div class="div-table-cell" style="width: 12%;">{{$us->cellphone}}</div>
+		                        <div class="div-table-cell" style="width: 9%;">
+		                            <a class="btn btn-success" href="{{ route('teacher.edit', $us->iduser)}}"><i class="zmdi zmdi-refresh"></i></a>
+		                        </div>
+		                        <div class="div-table-cell" style="width: 9%;">
+                            	<form method="POST" action="{{ route('teacher.destroy', $us->iduser)}}">
+		                     		@csrf
+		                    		@method('DELETE')
+		                    	    <button class="btn btn-danger" onclick="return confirm('Esta seguro de eliminar el registro?')"><i class="zmdi zmdi-delete"></i></button>
+	                          	</form>
 		                        </div>
 		                    </div>
 		                </div>
-		                @endif
-	                @endforeach
+		            </div>
                 @endforeach
             </div>
         </div>
