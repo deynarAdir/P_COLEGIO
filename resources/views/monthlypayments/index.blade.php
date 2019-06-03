@@ -11,6 +11,11 @@
             <ol class="breadcrumb">
                 <li><a href="{{ route('mensualidad.create') }}">Agregar nuevo</a></li>
                 <li class="active">Listado de Mensualidades</li>
+
+                <span><div class="div-table-cell">
+                 <a href="{{-- {{ route('mensualidad.editpago') }} --}}" class="btn btn-primary"><span>Actualizar Pago</span><i class="zmdi zmdi-refresh"></i></a>
+              </div></span>
+
             </ol>
         </div>
     </div>
@@ -78,6 +83,7 @@
         </div>
     </div>
 </div>
+
 @endsection
 @section('scripts')
 <script>

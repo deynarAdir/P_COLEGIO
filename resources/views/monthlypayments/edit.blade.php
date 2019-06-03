@@ -46,12 +46,6 @@
                         <label>Descripcion</label>
                     </div>
 
-{{--                     <div class="group-material">
-                        <input type="text" value="{{ $monthly->price }}" class="material-control tooltips-general" placeholder="Precio de la Mensualidad" required="" maxlength="20" data-toggle="tooltip" data-placement="top" name="price" title="Escriba el precio de la mensualidad">
-                        <span class="highlight"></span>
-                        <span class="bar"></span>
-                        <label>Precio</label>
-                    </div> --}}
 
                     <p class="text-center">
                         <button type="reset" class="btn btn-info" style="margin-right: 20px;"><i class="zmdi zmdi-roller"></i> &nbsp;&nbsp; Limpiar</button>

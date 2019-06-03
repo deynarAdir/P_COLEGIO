@@ -69,10 +69,10 @@ class MonthlyPaymentController extends Controller
         $monthly->start_date = $request->start_date;
         $monthly->end_date =  $request->end_date;
         $monthly->description = $request->description;
-        // $monthly->price = $request->price;
         $monthly->save();
         return redirect()->route('mensualidad.index');
     }
+
 
     public function active($id)
     {
