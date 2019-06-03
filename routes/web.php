@@ -63,5 +63,7 @@ Route::resource('parallels','ParallelController');
 
 Route::resource('degrees','DegreeController');
 
+Route::resource('managers','ManagerController');
+
 Route::resource('inscriptions','InscriptionController');
 

@@ -2,18 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\inscription;
-use App\Degree;
-use App\Parallel;
-use App\User;
-use App\Rol;
 use App\Document;
-use App\Manager;
-use App\Student;
-
 use Illuminate\Http\Request;
 
-class InscriptionController extends Controller
+class DocumentController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -22,14 +14,7 @@ class InscriptionController extends Controller
      */
     public function index()
     {
-        $degrees=Degree::all();
-        $parallels=Parallel::all();
-        $users=User::with(['manager','rol'])->where('id_rol','2')->get();
-        return view('inscriptions.index',[
-            'degrees' => $degrees,
-            'parallels' => $parallels,
-            'users' => $users
-        ]);
+        //
     }
 
     /**
@@ -56,10 +41,10 @@ class InscriptionController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\inscription  $inscription
+     * @param  \App\Document  $document
      * @return \Illuminate\Http\Response
      */
-    public function show(inscription $inscription)
+    public function show(Document $document)
     {
         //
     }
@@ -67,10 +52,10 @@ class InscriptionController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\inscription  $inscription
+     * @param  \App\Document  $document
      * @return \Illuminate\Http\Response
      */
-    public function edit(inscription $inscription)
+    public function edit(Document $document)
     {
         //
     }
@@ -79,10 +64,10 @@ class InscriptionController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\inscription  $inscription
+     * @param  \App\Document  $document
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, inscription $inscription)
+    public function update(Request $request, Document $document)
     {
         //
     }
@@ -90,10 +75,10 @@ class InscriptionController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\inscription  $inscription
+     * @param  \App\Document  $document
      * @return \Illuminate\Http\Response
      */
-    public function destroy(inscription $inscription)
+    public function destroy(Document $document)
     {
         //
     }

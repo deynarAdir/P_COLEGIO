@@ -2,18 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\inscription;
-use App\Degree;
-use App\Parallel;
+use App\Manager;
 use App\User;
 use App\Rol;
-use App\Document;
-use App\Manager;
-use App\Student;
 
 use Illuminate\Http\Request;
 
-class InscriptionController extends Controller
+class ManagerController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -22,14 +17,7 @@ class InscriptionController extends Controller
      */
     public function index()
     {
-        $degrees=Degree::all();
-        $parallels=Parallel::all();
-        $users=User::with(['manager','rol'])->where('id_rol','2')->get();
-        return view('inscriptions.index',[
-            'degrees' => $degrees,
-            'parallels' => $parallels,
-            'users' => $users
-        ]);
+        //
     }
 
     /**
@@ -39,7 +27,7 @@ class InscriptionController extends Controller
      */
     public function create()
     {
-        //
+        return view('manager.create');
     }
 
     /**
@@ -50,16 +38,34 @@ class InscriptionController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $rol = new Rol;
+        $user =new User;
+        $user->id_rol ='2';
+        $user->name=$request->name;
+        $user->paternal=$request->paternal;
+        $user->paternal=$request->maternal;
+        $user->gender=$request->gender;
+        $user->address=$request->address;
+        $user->email=$request->email;
+        $user->ci=$request->ci;
+        $user->cellphone=$request->cellphone;
+        $user->password=bcrypt($request->ci);
+        $user->save();
+        $user= User::all()->last();
+
+        $manager = new Manager;
+        $manager->id_user=$user->iduser;
+        $manager->save();
+        return redirect()->route('inscriptions.index');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\inscription  $inscription
+     * @param  \App\Manager  $manager
      * @return \Illuminate\Http\Response
      */
-    public function show(inscription $inscription)
+    public function show(Manager $manager)
     {
         //
     }
@@ -67,10 +73,10 @@ class InscriptionController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\inscription  $inscription
+     * @param  \App\Manager  $manager
      * @return \Illuminate\Http\Response
      */
-    public function edit(inscription $inscription)
+    public function edit(Manager $manager)
     {
         //
     }
@@ -79,10 +85,10 @@ class InscriptionController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\inscription  $inscription
+     * @param  \App\Manager  $manager
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, inscription $inscription)
+    public function update(Request $request, Manager $manager)
     {
         //
     }
@@ -90,10 +96,10 @@ class InscriptionController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\inscription  $inscription
+     * @param  \App\Manager  $manager
      * @return \Illuminate\Http\Response
      */
-    public function destroy(inscription $inscription)
+    public function destroy(Manager $manager)
     {
         //
     }

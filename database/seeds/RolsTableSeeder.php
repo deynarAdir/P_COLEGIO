@@ -16,5 +16,10 @@ class RolsTableSeeder extends Seeder
         	'description1' => 'Administrador',
         	'description2' => 'Gerente',
         ]);
+
+        Rol::create([
+        	'description1' => 'TUTOR',
+        	'description2' => 'PADRE',
+        ]);
     }
 }
