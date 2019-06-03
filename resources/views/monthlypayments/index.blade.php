@@ -23,6 +23,7 @@
             <div class="div-table-cell">Fecha Inicial</div>
             <div class="div-table-cell">Fecha Final</div>
             <div class="div-table-cell">Descripción</div>
+            <div class="div-table-cell">Precio</div>
             <div class="div-table-cell">Estado</div>
             <div class="div-table-cell">Actualizar</div>
             <div class="div-table-cell">Accion</div>
@@ -33,6 +34,7 @@
 	            <div class="div-table-cell">{{ $m->start_date }}</div>
 	            <div class="div-table-cell">{{ $m->end_date }}</div>
 	            <div class="div-table-cell">{{ $m->description }}</div>
+              <div class="div-table-cell">{{ $m->price }}</div>
                 <div class="div-table-cell">
                     @if($m->state == 1)
                       <div class="text-center text-white">

@@ -18,6 +18,7 @@ class CreateMonthlyPaymentsTable extends Migration
             $table->date('start_date');
             $table->date('end_date');
             $table->string('description',50);
+            $table->decimal('price',7,2);
             $table->boolean('state')->default(1);
             $table->timestamps();
         });

@@ -24,117 +24,99 @@
         <div class="clearfix"></div>
       </div>
       <div class="x_content">
-        <div class="row border">
-          <div class="col-md-4 col-sm-12 col-12">
-            <div class="group-material">
-                <input type="text" class="material-control tooltips-general" placeholder="Introduzca el CI del estudiante" pattern="[0-9-]{1,10}" required="" maxlength="10" data-toggle="tooltip" data-placement="top" title="Solamente números y guiones, 10 dígitos" id="ci_autocomplete">
-                <span class="highlight"></span>
-                <span class="bar"></span>
-                <label>C.I de Estudiante:</label>
-            </div>
-          </div>
-          <div class="col-md-4 col-sm-12">
-            <div class="group-material">
-                <input type="text" class="material-control tooltips-general" placeholder="Nombre del estudiante" maxlength="30" data-toggle="tooltip" data-placement="top" title="Es un campo autocompletado" id="nombre-estudiante">
-                <span class="highlight"></span>
-                <span class="bar"></span>
-                <label>Estudiante:</label>
-            </div>
-          </div>
-          <div class="col-md-4 col-sm-12 col-12">
-            <div class="group-material">
-                <input type="text" class="material-control tooltips-general" placeholder="Introduzca el NIT o CI del apoderado" pattern="[0-9-]{1,10}" required="" maxlength="10" data-toggle="tooltip" data-placement="top" title="Solamente números y guiones, 10 dígitos" id="ci_apoderado">
-                <span class="highlight"></span>
-                <span class="bar"></span>
-                <label>C.I del apoderado:</label>
-            </div>
-          </div>
-        </div>
-        <div class="row border">
-          <div class="col-md-4 col-sm-12">
-            <div class="group-material">
-                <span>Tipo de Comprobante</span>
-                <select class="material-control tooltips-general" data-toggle="tooltip" data-placement="top" title="Elige un tipo" id="tipo_comprobante" required="">
-                    <option value="" disabled="" selected="">Selecciona un tipo</option>
-                    <option value="Factura">Factura</option>
-                    <option value="Boleta">Boleto</option>
-                    <option value="Ticket">Ticket</option>
-                </select>
-            </div>
-          </div>
-          <div class="col-md-4 col-sm-12">
-            <div class="group-material">
-                <input type="text" class="material-control tooltips-general" placeholder="Introduzca la serie de comprobante" pattern="[0-9-]{1,10}" maxlength="10" data-toggle="tooltip" data-placement="top" title="Solamente números y guiones, 10 dígitos">
-                <span class="highlight"></span>
-                <span class="bar"></span>
-                <label>Serie comprobante:</label>
-                <span>Campo no obligatorio</span>
-            </div>
-          </div>
-          <div class="col-md-4 col-sm-12">
-            <div class="group-material">
-                <input type="text" class="material-control tooltips-general" placeholder="Introduzca el numero de comprobante" pattern="[0-9-]{1,10}" required="" maxlength="10" data-toggle="tooltip" data-placement="top" title="Solamente números y guiones, 10 dígitos">
-                <span class="highlight"></span>
-                <span class="bar"></span>
-                <label>Numero de comprobante:</label>
-            </div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-md-4 col-sm-12">
+        <form action="" method="post">
+          <div class="row border">
+            <div class="col-md-4 col-sm-12 col-12">
               <div class="group-material">
-                <input type="text" class="material-control tooltips-general" placeholder="Introduzca el CI del estudiante" pattern="[0-9-]{1,10}" required="" maxlength="10" data-toggle="tooltip" data-placement="top" title="Solamente números y guiones, 10 dígitos" id="description-1">
-                <span class="highlight"></span>
-                <span class="bar"></span>
-                <label>Nombre de mensualidad:</label>
-             </div>
-          </div>
-          <div class="form-group col-md-2">
-            <button class="btn btn-info" id="btn-mensualidades">...</button>
-          </div>
-          <div class="col-md-4 col-sm-12">
-            <div class="group-material">
-                <input type="textarea" class="material-control tooltips-general" placeholder="Introduzca cualquier observacion" maxlength="100" data-toggle="tooltip" data-placement="top" title="No es un campo obligatorio">
-                <span class="highlight"></span>
-                <span class="bar"></span>
-                <label>Observacion:</label>
-             </div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-md-12 col-sm-12 col-xs-12">
-            <div class="x_panel">
-              <div class="x_title">
-                <h2>Detalle de Ingreso de Articulos</h2>
-                <div class="clearfix"></div>
+                  <input type="text" class="material-control tooltips-general" placeholder="Introduzca el CI del estudiante" pattern="[0-9-]{1,10}" required="" maxlength="10" data-toggle="tooltip" data-placement="top" title="Solamente números y guiones, 10 dígitos" id="ci_autocomplete">
+                  <span class="highlight"></span>
+                  <span class="bar"></span>
+                  <label>C.I de Estudiante:</label>
               </div>
-              <div class="x_content table-responsive">
-                <table class="table table-striped table-bordered">
-                  <thead>
-                    <tr>
-                      <th>Nº</th>
-                      <th>Descripcion de pago</th>
-                      <th>Precio</th>
-                      <th>Acciones</th>
-                    </tr>
-                  </thead>
-                  <tbody id="llenado">
+              <input type="text" hidden name="id_student" id="id_student">
+            </div>
+            <div class="col-md-4 col-sm-12">
+              <div class="group-material">
+                  <input type="text" class="material-control tooltips-general" placeholder="Nombre del estudiante" maxlength="30" data-toggle="tooltip" data-placement="top" title="Es un campo autocompletado" id="nombre-estudiante">
+                  <span class="highlight"></span>
+                  <span class="bar"></span>
+                  <label>Estudiante:</label>
+              </div>
+            </div>
+            <div class="col-md-4 col-sm-12 col-12">
+              <div class="group-material">
+                  <input type="text" class="material-control tooltips-general" placeholder="Introduzca el NIT o CI del apoderado" pattern="[0-9-]{1,10}" required="" maxlength="10" data-toggle="tooltip" data-placement="top" title="Solamente números y guiones, 10 dígitos" id="ci_apoderado" name="nit_ci">
+                  <span class="highlight"></span>
+                  <span class="bar"></span>
+                  <label>C.I del apoderado:</label>
+              </div>
+            </div>
+          </div>
+          <div class="row border">
+            <div class="col-md-3 col-sm-12">
+              <div class="group-material">
+                  <input type="text" class="material-control tooltips-general" placeholder="Introduzca la serie de comprobante" pattern="[0-9-]{1,10}" maxlength="10" data-toggle="tooltip" data-placement="top" title="Solamente números y guiones, 10 dígitos" name="invoice_series">
+                  <span class="highlight"></span>
+                  <span class="bar"></span>
+                  <label>Serie de la Factura:</label>
+                  <span>Campo no obligatorio</span>
+              </div>
+            </div>
+            <div class="col-md-3 col-sm-12">
+              <div class="group-material">
+                  <input type="text" class="material-control tooltips-general" placeholder="Introduzca el numero de comprobante" pattern="[0-9-]{1,10}" required="" maxlength="10" data-toggle="tooltip" data-placement="top" title="Solamente números y guiones, 10 dígitos" name="invoice_number">
+                  <span class="highlight"></span>
+                  <span class="bar"></span>
+                  <label>Numero de la Factura:</label>
+              </div>
+            </div>
+            <div class="col-md-4 col-sm-12">
+                <div class="group-material">
+                  <input type="text" class="material-control tooltips-general" placeholder="Introduzca el CI del estudiante" pattern="[0-9-]{1,10}" required="" maxlength="10" data-toggle="tooltip" data-placement="top" title="Solamente números y guiones, 10 dígitos" id="description-1">
+                  <span class="highlight"></span>
+                  <span class="bar"></span>
+                  <label>Nombre de mensualidad:</label>
+               </div>
+            </div>
+            <div class="form-group col-md-2">
+              <button class="btn btn-info" id="btn-mensualidades">...</button>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+              <div class="x_panel">
+                <div class="x_title">
+                  <h2>Detalle de Ingreso de Articulos</h2>
+                  <div class="clearfix"></div>
+                </div>
+                <div class="x_content table-responsive">
+                  <table class="table table-striped table-bordered">
+                    <thead>
+                      <tr>
+                        <th>Nº</th>
+                        <th>Descripcion de pago</th>
+                        <th>Precio</th>
+                        <th>Acciones</th>
+                      </tr>
+                    </thead>
+                    <tbody id="llenado">
 
-                  </tbody>
-                </table>
-                <div >
-                  
+                    </tbody>
+                  </table>
+                  <div >
+                    
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
-        <div class="row">
-          <div class="col-md-12">
-            <button class="btn btn-secondary">Cerrar</button>
-            <button class="btn btn-success">Aceptar</button>
+          <div class="row">
+            <div class="col-md-12">
+              <button class="btn btn-secondary">Cerrar</button>
+              <button class="btn btn-success">Aceptar</button>
+            </div>
           </div>
-        </div>
+        </form>
       </div>
     </div>
   </div>
@@ -163,6 +145,7 @@
                       <th class="text-center">Descripcion</th>
                       <th class="text-center">Fecha inicio</th>
                       <th class="text-center">Fecha final</th>
+                      <th class="text-center">Precio</th>
                       <th class="text-center">Accion</th>
                     </tr>
                   </thead>
@@ -195,7 +178,14 @@
         method: "GET",
         success: function(data){
           console.log(data);
-          $('#nombre-estudiante').val(data.student.name+" "+data.student.paternal+" "+data.student.maternal);
+          $('#id_student').val(data.student.iduser);
+          if(data.student.paternal == "" || data.student.paternal == null){
+            $('#nombre-estudiante').val(data.student.name+" "+data.student.maternal);  
+          }else if(data.student.maternal == "" || data.student.maternal == null){
+            $('#nombre-estudiante').val(data.student.name+" "+data.student.paternal);
+          }else{
+            $('#nombre-estudiante').val(data.student.name+" "+data.student.paternal+" "+data.student.maternal);
+          }
         }
       });
     }
@@ -220,6 +210,7 @@
               <td> ${data.monthlypayments.data[i].description} </td>
               <td> ${data.monthlypayments.data[i].start_date} </td>
               <td> ${data.monthlypayments.data[i].end_date} </td>
+              <td> ${data.monthlypayments.data[i].price} </td>
               <td>
                 <button type="button" class="btn btn-success btn-xs seleccionado modal-ml"
                     data-id="${data.monthlypayments.data[i].idmonthly_payment}"
@@ -246,10 +237,12 @@
               <td> ${data.monthly.data[i].description} </td>
               <td> ${data.monthly.data[i].start_date} </td>
               <td> ${data.monthly.data[i].end_date} </td>
+              <td> ${data.monthly.data[i].price} </td>
               <td>
                 <button type="button" class="btn btn-success btn-xs seleccionado modal-ml"
                     data-id="${data.monthly.data[i].idmonthly_payment}"
-                    data-description="${data.monthly.data[i].description}">
+                    data-description="${data.monthly.data[i].description}"
+                    data-precio="${data.monthly.data[i].price}">
                     <i class="glyphicon glyphicon-plus"></i>
                 </button>
               </td>
@@ -265,13 +258,15 @@
   $('#tabla-mensualidades').on("click","button.seleccionado",function(){
       let id = $(this).data('id');
       let descripcion = $(this).data('description');
+      let price = $(this).data('precio');
       if(verificarRepetido(id)){
         alert('Se esta repitiendo el pago');
       }else{
         mensualidades.push(
           {
             mensualidad_id: id,
-            descripcion: descripcion
+            descripcion: descripcion,
+            price: price
           }
         );
         $('#modal-mensualidades').modal('hide');
@@ -298,11 +293,12 @@
   });
   function juntarLlenado(){
     let juntar2;
+    let sumador=0;
     for (var i = 0;i<mensualidades.length;i++) {
         juntar2+=`<tr>
           <td> ${mensualidades[i].mensualidad_id} </td>
           <td> ${mensualidades[i].descripcion} </td>
-          <td> hola </td>
+          <td> ${mensualidades[i].price} </td>
           <td>
             <button type="button" class="btn btn-danger btn-xs eliminar-lista modal-ml"
                 data-id="${mensualidades[i].id}"
@@ -310,8 +306,14 @@
                 <i class="glyphicon glyphicon-plus"></i>
             </button>
           </td>
-      </tr>`;
+      </tr>`
+      sumador=sumador+ parseFloat(mensualidades[i].price);
     }
+    juntar2+=`<tr>
+      <td></td>
+      <td></td>
+      <td colspan="4" rowspan="" headers="">${sumador}</td>
+    </tr>`;
     $('#llenado').html(juntar2);
     console.log(mensualidades);
   }
