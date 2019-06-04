@@ -7,6 +7,7 @@
     <title>Inicio</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <link rel="Shortcut Icon" type="image/x-icon" href="{!! asset('assets/assets/icons/book.ico') !!}" />
     {{-- <script src="{!! asset('assets/js/sweet-alert.min.js') !!}"></script> --}}
     <link rel="stylesheet" href="{!! asset('assets/css/sweet-alert.css') !!}">

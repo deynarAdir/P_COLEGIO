@@ -13,7 +13,7 @@ class PaymentController extends Controller
      */
     public function index()
     {
-        //
+        
     }
 
     /**
@@ -23,7 +23,7 @@ class PaymentController extends Controller
      */
     public function create()
     {
-        //
+        
     }
 
     /**
@@ -34,7 +34,18 @@ class PaymentController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $fecha = Carbon::now('America/La_Paz');
+        $payment = new Payment;
+        $payment->id_student = $request->id_student;
+        $payment->id_user = Auth::user()->iduser;
+        $payment->nit_ci = $request->nit_ci;
+        $payment->date = $fecha->toDateString();
+        $payment->invoice_series = $request->invoice_series;
+        $payment->invoice_number = $request->invoice_number;
+        $payment->total_payment = $request->total_payment;
+        $payment->state = 'regitrado';
+        $payment->save();
+        
     }
 
     /**

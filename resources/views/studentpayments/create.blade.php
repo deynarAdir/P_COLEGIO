@@ -24,7 +24,6 @@
         <div class="clearfix"></div>
       </div>
       <div class="x_content">
-        <form action="" method="post">
           <div class="row border">
             <div class="col-md-4 col-sm-12 col-12">
               <div class="group-material">
@@ -45,7 +44,7 @@
             </div>
             <div class="col-md-4 col-sm-12 col-12">
               <div class="group-material">
-                  <input type="text" class="material-control tooltips-general" placeholder="Introduzca el NIT o CI del apoderado" pattern="[0-9-]{1,10}" required="" maxlength="10" data-toggle="tooltip" data-placement="top" title="Solamente números y guiones, 10 dígitos" id="ci_apoderado" name="nit_ci">
+                  <input type="text" class="material-control tooltips-general" placeholder="Introduzca el NIT o CI del apoderado" pattern="[0-9-]{1,10}" required="" maxlength="10" data-toggle="tooltip" data-placement="top" title="Solamente números y guiones, 10 dígitos" id="nit_ci" name="nit_ci">
                   <span class="highlight"></span>
                   <span class="bar"></span>
                   <label>C.I del apoderado:</label>
@@ -55,7 +54,7 @@
           <div class="row border">
             <div class="col-md-3 col-sm-12">
               <div class="group-material">
-                  <input type="text" class="material-control tooltips-general" placeholder="Introduzca la serie de comprobante" pattern="[0-9-]{1,10}" maxlength="10" data-toggle="tooltip" data-placement="top" title="Solamente números y guiones, 10 dígitos" name="invoice_series">
+                  <input type="text" class="material-control tooltips-general" placeholder="Introduzca la serie de comprobante" pattern="[0-9-]{1,10}" maxlength="10" data-toggle="tooltip" data-placement="top" title="Solamente números y guiones, 10 dígitos" name="invoice_series" id="invoice_series">
                   <span class="highlight"></span>
                   <span class="bar"></span>
                   <label>Serie de la Factura:</label>
@@ -64,7 +63,7 @@
             </div>
             <div class="col-md-3 col-sm-12">
               <div class="group-material">
-                  <input type="text" class="material-control tooltips-general" placeholder="Introduzca el numero de comprobante" pattern="[0-9-]{1,10}" required="" maxlength="10" data-toggle="tooltip" data-placement="top" title="Solamente números y guiones, 10 dígitos" name="invoice_number">
+                  <input type="text" class="material-control tooltips-general" placeholder="Introduzca el numero de comprobante" pattern="[0-9-]{1,10}" required="" maxlength="10" data-toggle="tooltip" data-placement="top" title="Solamente números y guiones, 10 dígitos" name="invoice_number" id="invoice_number">
                   <span class="highlight"></span>
                   <span class="bar"></span>
                   <label>Numero de la Factura:</label>
@@ -72,14 +71,14 @@
             </div>
             <div class="col-md-4 col-sm-12">
                 <div class="group-material">
-                  <input type="text" class="material-control tooltips-general" placeholder="Introduzca el CI del estudiante" pattern="[0-9-]{1,10}" required="" maxlength="10" data-toggle="tooltip" data-placement="top" title="Solamente números y guiones, 10 dígitos" id="description-1">
+                  <input type="text" class="material-control tooltips-general" placeholder="Mensualidad" data-toggle="tooltip" data-placement="top" title="Es un campo autocompletado" id="description-1">
                   <span class="highlight"></span>
                   <span class="bar"></span>
                   <label>Nombre de mensualidad:</label>
                </div>
             </div>
             <div class="form-group col-md-2">
-              <button class="btn btn-info" id="btn-mensualidades">...</button>
+              <button type="button" class="btn btn-info" id="btn-mensualidades">...</button>
             </div>
           </div>
           <div class="row">
@@ -113,10 +112,9 @@
           <div class="row">
             <div class="col-md-12">
               <button class="btn btn-secondary">Cerrar</button>
-              <button class="btn btn-success">Aceptar</button>
+              <button class="btn btn-success" id="agregar">Aceptar</button>
             </div>
           </div>
-        </form>
       </div>
     </div>
   </div>
@@ -164,6 +162,7 @@
 @section('scripts')
 <script>
   let mensualidades = [];
+  let total_pago;
   var arr = ['hola','como','estas'];
   var students = {!! $students !!};
   console.log(students);
@@ -315,7 +314,30 @@
       <td colspan="4" rowspan="" headers="">${sumador}</td>
     </tr>`;
     $('#llenado').html(juntar2);
+    total_pago = sumador;
+    console.log(total_pago);
     console.log(mensualidades);
   }
+
+  $('#agregar').click(function() {
+    let id_student = $('#id_student').val();
+    let nit_ci = $('#nit_ci').val();
+    let invoice_series = $('#invoice_series').val();
+    let invoice_number = $('#invoice_number').val();
+    let total_payment = total_pago;
+    $.ajax({
+      url: "{{ url('pagos') }}",
+      headers: {'X-CSRF-TOKEN':$('meta[name="csrf-token"]').attr('content')},
+      method: "POST",
+      data: {
+        id_student,nit_ci,invoice_series,invoice_number,total_payment,mensualidades
+      },
+      success: function(data){
+        window.open('http://localhost:8080/colegio/public/pago/pdf/'+data.id,'_blank');
+        console.log(data.id);
+        location.href = '{{ route('pagos.index') }}';
+      }
+    });
+  });
 </script>
 @endsection
