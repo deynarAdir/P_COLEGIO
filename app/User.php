@@ -44,10 +44,10 @@ class User extends Authenticatable
     }
 
     public function manager(){
-        return $this->hasOne(Manager::class,'idmanager','iduser');
+        return $this->hasMany(Manager::class,'id_user');
     }
 
     public function student(){
-        return $this->hasMany(Student::class,'idstudent','iduser');
+        return $this->hasMany(Student::class,'id_user','iduser');
     }
 }

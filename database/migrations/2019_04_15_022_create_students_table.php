@@ -20,7 +20,7 @@ class CreateStudentsTable extends Migration
             $table->integer('id_degree')->unsigned();
             $table->integer('id_parallel')->unsigned();
             $table->integer('student_status');
-            $table->string('rude',45);
+            $table->string('rude',45)->nullable();
             $table->string('blood_type',10);
             $table->integer('age');
             $table->timestamps();

@@ -7,14 +7,14 @@ use Illuminate\Database\Eloquent\Model;
 class Student extends Model
 {
     public function document(){
-        return $this->hasOne(Document::class,'idstudent');
+        return $this->hasMany(Document::class,'id_student');
     }
 
     public function user(){
-        return $this->hasOne(User::class,'iduser');
+        return $this->belongsTo(User::class,'id_user');
     }
 
     public function manager(){
-        return $this->belongsTo(Manager::class,'idmanager');
+        return $this->belongsTo(Manager::class,'id_manager');
     }
 }

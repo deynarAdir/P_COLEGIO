@@ -1,6 +1,7 @@
 <?php
 
 use App\User;
+use App\Document;
 use Illuminate\Database\Seeder;
 
 class UsersTableSeeder extends Seeder
@@ -37,5 +38,6 @@ class UsersTableSeeder extends Seeder
         	'email' => 'ronald@gmail.com',
         	'password' => bcrypt(12345678),
         ]);
+
     }
 }
