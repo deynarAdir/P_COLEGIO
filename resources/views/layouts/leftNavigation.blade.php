@@ -51,6 +51,14 @@
                         </li>
                     </ul>
                 </li>
+
+                <li>
+                    <div class="dropdown-menu-button"><i class="zmdi zmdi-home zmdi-hc-fw"></i>&nbsp;&nbsp; Aulas <i class="zmdi zmdi-chevron-down pull-right zmdi-hc-fw"></i></div>
+                    <ul class="list-unstyled">
+                        <li><a href="{{ route('equipamiento.index') }}"><i class="zmdi zmdi-money zmdi-hc-fw"></i>&nbsp;&nbsp; Equipamiento</a></li>
+                    </ul>
+                </li>
+
                 <li><a href="report.html"><i class="zmdi zmdi-trending-up zmdi-hc-fw"></i>&nbsp;&nbsp; Reportes y estadísticas</a></li>
                 <li><a href="advancesettings.html"><i class="zmdi zmdi-wrench zmdi-hc-fw"></i>&nbsp;&nbsp; Configuraciones avanzadas</a></li>
             </ul>
