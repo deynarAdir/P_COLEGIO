@@ -20,38 +20,38 @@
     <div class="div-table">
         <div class="div-table-row div-table-head">
             <div class="div-table-cell">#</div>
-            <div class="div-table-cell">Extension</div>
-            <div class="div-table-cell">Observacion</div>
+            <div class="div-table-cell">Numero de Serie</div>
+            <div class="div-table-cell">Numero de factura</div>
+            <div class="div-table-cell">Total Pago</div>
             <div class="div-table-cell">Fecha</div>
-            <div class="div-table-cell">Num Factura</div>
-            <div class="div-table-cell">Nam Factura</div>
+            <div class="div-table-cell">Estudiante</div>
+            <div class="div-table-cell">Nit_ci responsable</div>
             <div class="div-table-cell">Ver</div>
             <div class="div-table-cell">Estado</div>
         </div>  
         @foreach($studentpayments as $s)
 	        <div class="div-table-row">
-	            <div class="div-table-cell">{{ $s->idstudent_payment}}</div>
-	            <div class="div-table-cell">{{ $m->extension }}</div>
-	            <div class="div-table-cell">{{ $m->observation }}</div>
-	            <div class="div-table-cell">{{ $m->invoice_number }}</div>
-              <div class="div-table-cell">{{ $m->invoice_name }}</div>
-              <div class="div-table-cell">{{ $m->date }}</div>
-              <div class="div-table-cell">Ver</div>
-              <div class="div-table-cell">{{ $m->state }}</div>
-              {{-- <div class="div-table-cell">
-                  @if($m->state == 'Registrado')
-                    <div class="text-center text-white">
-                      <span class="badge bg-success">activo</span>
-                    </div>
-                  @else
-                    <div class="text-center text-white">
-                      <span class="badge bg-danger">inactivo</span>
-                    </div>
-                  @endif
-                </div> --}}
+	            <div class="div-table-cell">{{ $s->idpayment}}</div>
+	            <div class="div-table-cell">{{ $s->invoice_series }}</div>
+	            <div class="div-table-cell">{{ $s->invoice_number }}</div>
+	            <div class="div-table-cell">{{ $s->total_payment }}</div>
+              <div class="div-table-cell">{{ $s->date }}</div>
+              <div class="div-table-cell">{{ $s->name ." ". $s->paternal ." ". $s->maternal }}</div>
+              <div class="div-table-cell">{{ $s->nit_ci }}</div>
+              <div class="div-table-cell">
+                <a href="{{ url('pagos/detalle',$s->idpayment) }}" class="btn btn-success btn-xs modal-ml">
+                    ver
+                </a>
+              </div>
+              <div class="div-table-cell">
+                <span class="badge bg-blue">{{ $s->state }}</span>
+              </div>
 	        </div>
 	    @endforeach
-    </div>                  
+    </div>  
+    <div class="text-center">
+      {{ $studentpayments->links() }}
+    </div>                
 </div>
 {{-- Modal Delete --}}
 

@@ -64,3 +64,6 @@ Route::resource('pagos','StudentPaymentController');
 Route::get('obtener/mensualidades', 'StudentPaymentController@getMonthly');
 Route::get('obtener/estudiante/{ci}','StudentPaymentController@getStudent');
 Route::get('mensualidad/buscar','StudentPaymentController@search');
+
+Route::get('pago/pdf/{id}','StudentPaymentController@pdf');
+Route::get('pagos/detalle/{id}','StudentPaymentController@detallePago');
