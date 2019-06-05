@@ -42,11 +42,14 @@
                 <li>
                     <div class="dropdown-menu-button"><i class="zmdi zmdi-alarm zmdi-hc-fw"></i>&nbsp;&nbsp; Finanzas <i class="zmdi zmdi-chevron-down pull-right zmdi-hc-fw"></i></div>
                     <ul class="list-unstyled">
-<<<<<<< HEAD
+
                        {{--  <li><a href="{{ route('pensiones.index') }}"><i class="zmdi zmdi-calendar zmdi-hc-fw"></i>&nbsp;&nbsp; Pensiones</a></li> --}}
-=======
->>>>>>> 14de2d8d68a6e139c128f8f433cd06f1d8c73f35
+
                         <li><a href="{{ route('mensualidad.index') }}"><i class="zmdi zmdi-money zmdi-hc-fw"></i>&nbsp;&nbsp; Mensualidades</a></li>
+
+                        {{-- FeeTypes(Tipo de cuota) --}}
+                         <li><a href="{{ route('feetype.index') }}"><i class="zmdi zmdi-bookmark-outline zmdi-hc-fw"></i>&nbsp;&nbsp; Tipo de Cuota</a></li>
+
                         <li><a href="{{ route('pagos.index') }}"><i class="zmdi zmdi-calendar zmdi-hc-fw"></i>&nbsp;&nbsp; Pagos</a></li>
                         <li>
                             <a href="loanreservation.html"><i class="zmdi zmdi-timer zmdi-hc-fw"></i>&nbsp;&nbsp; Reservaciones <span class="label label-danger pull-right label-mhover">7</span></a>

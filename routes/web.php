@@ -67,3 +67,8 @@ Route::get('mensualidad/buscar','StudentPaymentController@search');
 
 Route::get('pago/pdf/{id}','StudentPaymentController@pdf');
 Route::get('pagos/detalle/{id}','StudentPaymentController@detallePago');
+
+
+//feetype
+
+Route::resource('feetype','FeeTypeController');
