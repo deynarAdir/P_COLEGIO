@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\User;
 use App\Secretary;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Input;
 
 class SecretaryController extends Controller
 {
@@ -37,7 +38,32 @@ class SecretaryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $user = new User;
+        $user->id_rol = 3;
+        $user->name = $request->name;
+        $user->paternal = $request->paternal;
+        $user->maternal = $request->maternal;
+        $user->gender = $request->gender;
+        $user->address = $request->address;
+        $user->email = $request->email;
+        $user->ci = $request->ci;
+        $user->cellphone = $request->cellphone;
+        $user->password = $request->password;
+        $user->phone = $request->phone;
+        $user->save();
+
+        $secretary = new Secretary;
+        $secretary->id_user = $user->iduser;
+        $secretary->num_job_certificate = $request->numberCer;
+        $secretary->num_languade_diploma = $request->numberDip;
+        if(Input::hasFile('cv')){
+            $file = Input::file('cv');
+            $file->move(public_path().'\documents\personal',$file->getClientOriginalName());
+            $secretary->cv=$file->getClientOriginalName();
+        }
+        $secretary->save();
+
+        return redirect()->route('secretary.index');
     }
 
     /**
@@ -57,9 +83,11 @@ class SecretaryController extends Controller
      * @param  \App\Secretary  $secretary
      * @return \Illuminate\Http\Response
      */
-    public function edit(Secretary $secretary)
+    public function edit($secretary)
     {
-        //
+        $user = User::findOrFail($secretary);
+        $secretary = Secretary::where('id_user','=',$user->iduser)->first();
+        return view('secretaries.edit',compact('user','secretary'));
     }
 
     /**
@@ -69,9 +97,24 @@ class SecretaryController extends Controller
      * @param  \App\Secretary  $secretary
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Secretary $secretary)
+    public function update(Request $request, $secretary)
     {
-        //
+        $user = User::findOrFail($secretary);
+        $user->name = $request->name;
+        $user->paternal = $request->paternal;
+        $user->maternal = $request->maternal;
+        $user->address = $request->address;
+        $user->email = $request->email;
+        $user->cellphone = $request->cellphone;
+        $user->phone = $request->phone;
+        $user->update();
+
+        $secretary = Secretary::where('id_user','=',$user->iduser)->first();
+        $secretary->num_job_certificate = $request->numberCer;
+        $secretary->num_languade_diploma = $request->numberDip;
+        $secretary->update();
+
+        return redirect()->route('secretary.index');
     }
 
     /**

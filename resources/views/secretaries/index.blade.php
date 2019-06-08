@@ -51,7 +51,6 @@
                         <div class="div-table-cell" style="width: 15%;">Nombre</div>
                         <div class="div-table-cell" style="width: 15%;">Apellidos</div>
                         <div class="div-table-cell" style="width: 15%;">CI</div>
-                        <div class="div-table-cell" style="width: 15%;">Especialidad</div>
                         <div class="div-table-cell" style="width: 12%;">Celular</div>
                         <div class="div-table-cell" style="width: 9%;">Actualizar</div>
                         <div class="div-table-cell" style="width: 9%;">Eliminar</div>
@@ -65,10 +64,9 @@
 	                            <div class="div-table-cell" style="width: 15%;">{{$us->name}}</div>
 	                            <div class="div-table-cell" style="width: 15%;">{{$us->paternal}} </div>
 		                        <div class="div-table-cell" style="width: 15%;">{{$us->ci}}</div>
-		                        <div class="div-table-cell" style="width: 15%;">{{'especialidad'}}</div>
 		                        <div class="div-table-cell" style="width: 12%;">{{$us->cellphone}}</div>
 		                        <div class="div-table-cell" style="width: 9%;">
-		                            <a class="btn btn-success" href="{{ route('teacher.edit', $us->iduser)}}"><i class="zmdi zmdi-refresh"></i></a>
+		                            <a class="btn btn-success" href="{{ route('secretary.edit', $us->iduser)}}"><i class="zmdi zmdi-refresh"></i></a>
 		                        </div>
 		                        <div class="div-table-cell" style="width: 9%;">
                             	<form method="POST" action="{{ route('teacher.destroy', $us->iduser)}}">

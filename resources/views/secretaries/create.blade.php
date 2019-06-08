@@ -28,7 +28,7 @@
                 <div class="col-xs-12 lead">
                     <ol class="breadcrumb">
                       <li class="active">Nuevo docente</li>
-                      <li><a href="{{ route('teacher.index') }}">Listado de docentes</a></li>
+                      <li><a href="{{ route('secretary.index') }}">Listado de docentes</a></li>
                     </ol>
                 </div>
             </div>
@@ -36,7 +36,7 @@
         <div class="container-fluid">
             <div class="container-flat-form">
                 <div class="title-flat-form title-flat-blue">Registrar un nuevo docente</div>
-                <form method="POST" action="{{ route('teacher.store')}}" enctype="multipart/form-data" target="_blank">
+                <form method="POST" action="{{ route('secretary.store')}}" enctype="multipart/form-data" target="_blank">
                 	@csrf
                     <div class="row">
                        <div class="col-md-12 col-md-10 col-md-offset-1">
@@ -131,33 +131,34 @@
                                     </div>
                                 </div>
                             </div>
-                           <legend>Datos academicos</legend><br>
-                            <div class="group-material">
-                                <input type="text" class="material-control tooltips-general" placeholder="Escribe aquí la especialidad del docente" pattern="[a-zA-ZáéíóúÁÉÍÓÚñÑ0-9 ]{1,40}" required="" maxlength="40" data-toggle="tooltip" data-placement="top" title="Asignatura del docente" name="speciality">
-                                <span class="highlight"></span>
-                                <span class="bar"></span>
-                                <label>Especialidad</label>
+                            <legend>Datos academicos</legend><br>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="group-material">
+                                        <input type="text" class="material-control tooltips-general" placeholder="Escribe aquí el numero de certificado" pattern="[a-zA-ZáéíóúÁÉÍÓÚñÑ0-9 ]{1,30}" maxlength="30" data-toggle="tooltip" data-placement="top" required title="Numero de certificadoo" name="numberCer">
+                                        <span class="highlight"></span>
+                                        <span class="bar"></span>
+                                        <label>Numero certificado</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="group-material">
+                                        <input type="text" class="material-control tooltips-general" placeholder="Escribe aquí el numero de diploma" pattern="[a-zA-ZáéíóúÁÉÍÓÚñÑ0-9 ]{1,30}" maxlength="30" data-toggle="tooltip" data-placement="top" required title="Numero de diploma" name="numberDip">
+                                        <span class="highlight"></span>
+                                        <span class="bar"></span>
+                                        <label>Numero diploma</label>
+                                    </div>
+                                </div>
                             </div>
-
-                            <div class="group-material">
-                                <input type="text" class="material-control tooltips-general" placeholder="Escribe aquí el numero de item del docente" pattern="[a-zA-ZáéíóúÁÉÍÓÚñÑ0-9 ]{1,30}" maxlength="30" data-toggle="tooltip" data-placement="top" title="Numero de item de trabajo" name="numberItem">
-                                <span class="highlight"></span>
-                                <span class="bar"></span>
-                                <label>Numero item</label>
-                            </div>
-
-                            <div class="group-material">
-                                <input type="file" class="material-control tooltips-general"  required="" title="Documento PDF" name="cv">
-                                <span class="highlight"></span>
-                                <span class="bar"></span>
-                                <label>Documento PDF</label>
-                            </div>
-
-                            <div class="group-material">
-                                <input type="text" class="material-control tooltips-general" placeholder="Escribe aquí el colegio del docente" pattern="[a-zA-ZáéíóúÁÉÍÓÚñÑ ]{1,40}" required="" maxlength="40" data-toggle="tooltip" data-placement="top" title="Colegio de docente" name="teacherSchool">
-                                <span class="highlight"></span>
-                                <span class="bar"></span>
-                                <label>Docente colegio</label>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="group-material">
+                                        <input type="file" class="material-control tooltips-general"  required="" title="Documento PDF" name="cv">
+                                        <span class="highlight"></span>
+                                        <span class="bar"></span>
+                                        <label>Documento PDF</label>
+                                    </div>
+                                </div>
                             </div>
                             <p class="text-center">
                                 <button type="reset" class="btn btn-info" style="margin-right: 20px;"><i class="zmdi zmdi-roller"></i> &nbsp;&nbsp; Limpiar</button>
