@@ -19,8 +19,8 @@
                     <img src="{!! asset('assets/img/user02.png') !!}" alt="user" class="img-responsive center-box" style="max-width: 110px;">
                 </div>
                 <div class="col-xs-12 col-sm-8 col-md-8 text-justify lead">
-                    Bienvenido a la sección donde se encuentra el listado de docentes registrados en el sistema, puedes actualizar algunos datos de los docentes o eliminar el registro completo del docente siempre y cuando no tenga préstamos asociados.<br>
-                    <strong class="text-danger"><i class="zmdi zmdi-alert-triangle"></i> &nbsp; ¡Importante! </strong>Si eliminas el docente del sistema se borrarán todos los datos relacionados con él, incluyendo préstamos y registros en la bitácora.
+                    Bienvenido a la sección donde se encuentra el listado del personal administrativo registrados en el sistema, puedes actualizar algunos datos del personal o eliminar el registro completo del personal.<br>
+                    <strong class="text-danger"><i class="zmdi zmdi-alert-triangle"></i> &nbsp; ¡Importante! </strong>Si eliminas un registro del sistema se borrarán todos los datos relacionados con él.
                 </div>
             </div>
         </div>
@@ -28,8 +28,8 @@
             <div class="row">
                 <div class="col-xs-12 lead">
                     <ol class="breadcrumb">
-                        <li><a href="{{ route('teacher.create') }}">Nuevo docente</a></li>
-                        <li class="active">listado de docentes</li>
+                        <li><a href="{{ route('secretary.create') }}">Nuevo Personal</a></li>
+                        <li class="active">Listado del personal</li>
                     </ol>
                 </div>
             </div>
@@ -37,7 +37,7 @@
         <div class="container-fluid">
             <form class="pull-right" style="width: 30% !important;" autocomplete="off">
                 <div class="group-material">
-                    <input type="search" style="display: inline-block !important; width: 70%;" class="material-control tooltips-general" placeholder="Buscar docente" required="" pattern="[a-zA-ZáéíóúÁÉÍÓÚ ]{1,50}" maxlength="50" data-toggle="tooltip" data-placement="top" title="Escribe los nombres, sin los apellidos">
+                    <input type="search" style="display: inline-block !important; width: 70%;" class="material-control tooltips-general" placeholder="Buscar personal" required="" pattern="[a-zA-ZáéíóúÁÉÍÓÚ ]{1,50}" maxlength="50" data-toggle="tooltip" data-placement="top" title="Escribe los nombres, sin los apellidos">
                     <button class="btn" style="margin: 0; height: 43px; background-color: transparent !important;">
                         <i class="zmdi zmdi-search" style="font-size: 25px;"></i>
                     </button>
