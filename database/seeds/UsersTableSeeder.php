@@ -21,8 +21,8 @@ class UsersTableSeeder extends Seeder
             'address' => 'Calle: Gregorio Garcia Lanza',
             'ci' => '69860335',
             'cellphone' => '75273121',
-        	'email' => 'roalmollericona@gmail.com',
-        	'password' => bcrypt(69860335),
+        	'email' => 'garbo@gmail.com',
+        	'password' => bcrypt(12345678),
         ]);
     }
 }

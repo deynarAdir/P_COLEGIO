@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Assets;
 use Illuminate\Http\Request;
-
 class AssetsController extends Controller
 {
     /**
@@ -35,12 +34,20 @@ class AssetsController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
+    { 
+        
         $assets = new Assets;
         $assets->name = $request->name;
         $assets->brand = $request->brand;
-        $assets->image = $request->image;
+        //$assets->image = $request->image;
         $assets->description = $request->description;
+        
+        if(Input::HasFile('image')){
+            $file = Input::file('image');
+            $file ->move(public_path().'\imagenequipo',$file -> getClientOriginalName());
+            $assets->image=$file->getClientOriginalName();
+        }
+
         $assets -> save();
         return redirect()->route('assets.index');
     }
