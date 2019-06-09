@@ -46,4 +46,9 @@ class User extends Authenticatable
     public function secretaries(){
         return $this->hasMany('App\Secretary','id_user');
     }
+
+    public function scopeSearch($query, $name){
+        if($name)
+            return $query->where('name','LIKE',"%$name%")->orWhere('ci','LIKE',"%$name%");
+    }
 }

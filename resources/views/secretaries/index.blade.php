@@ -35,9 +35,9 @@
             </div>
         </div>
         <div class="container-fluid">
-            <form class="pull-right" style="width: 30% !important;" autocomplete="off">
+            <form class="pull-right" style="width: 30% !important;" autocomplete="off" method="GET" action="{{ route('secretary.index') }}">
                 <div class="group-material">
-                    <input type="search" style="display: inline-block !important; width: 70%;" class="material-control tooltips-general" placeholder="Buscar personal" required="" pattern="[a-zA-ZáéíóúÁÉÍÓÚ ]{1,50}" maxlength="50" data-toggle="tooltip" data-placement="top" title="Escribe los nombres, sin los apellidos">
+                    <input type="search" style="display: inline-block !important; width: 70%;" class="material-control tooltips-general" placeholder="Buscar por nombre o CI" maxlength="20" data-toggle="tooltip" data-placement="top" title="Escribe los nombres, o carnet de identidad" name="searchName">
                     <button class="btn" style="margin: 0; height: 43px; background-color: transparent !important;">
                         <i class="zmdi zmdi-search" style="font-size: 25px;"></i>
                     </button>
@@ -69,7 +69,7 @@
 		                            <a class="btn btn-success" href="{{ route('secretary.edit', $us->iduser)}}"><i class="zmdi zmdi-refresh"></i></a>
 		                        </div>
 		                        <div class="div-table-cell" style="width: 9%;">
-                            	<form method="POST" action="{{ route('teacher.destroy', $us->iduser)}}">
+                            	<form method="POST" action="{{ route('secretary.destroy', $us->iduser)}}">
 		                     		@csrf
 		                    		@method('DELETE')
 		                    	    <button class="btn btn-danger" onclick="return confirm('Esta seguro de eliminar el registro?')"><i class="zmdi zmdi-delete"></i></button>

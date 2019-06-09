@@ -14,9 +14,9 @@ class SecretaryController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $users = User::where('id_rol','=',3)->where('estate','=',1)->get();
+        $users = User::search($request->searchName)->where('id_rol','=',3)->where('estate','=',1)->get();
         return view('secretaries.index',compact('users'));
     }
 
@@ -123,8 +123,11 @@ class SecretaryController extends Controller
      * @param  \App\Secretary  $secretary
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Secretary $secretary)
+    public function destroy($id)
     {
-        //
+        $user = User::FindOrFail($id);
+        $user->estate = 0;
+        $user->update();
+        return redirect()->route('secretary.index');
     }
 }

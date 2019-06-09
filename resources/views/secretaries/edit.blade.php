@@ -26,7 +26,7 @@
         <div class="container-fluid">
             <div class="container-flat-form">
                 <div class="title-flat-form title-flat-blue">Editar datos del usuario</div>
-                <form method="POST" action="{{ route('secretary.update',$user->iduser)}}" enctype="multipart/form-data" target="_blank">
+                <form method="POST" action="{{ route('secretary.update',$user->iduser)}}" enctype="multipart/form-data">
                     @method('PUT')
                     @csrf
                     <div class="row">
@@ -116,7 +116,7 @@
                                 </div>
                             </div>
                             <p class="text-center">
-                                <button type="reset" class="btn btn-info" style="margin-right: 20px;"><i class="zmdi zmdi-roller"></i> &nbsp;&nbsp; Limpiar</button>
+                                <a href="{{ route('secretary.index') }}"><button type="button" class="btn btn-info" style="margin-right: 20px;"><i class="zmdi zmdi-roller"></i> &nbsp;&nbsp; Volver</button></a>
                                 <button type="submit" class="btn btn-primary"><i class="zmdi zmdi-floppy"></i> &nbsp;&nbsp; Guardar</button>
                             </p>
                         </div>
