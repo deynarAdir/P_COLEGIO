@@ -56,6 +56,7 @@
                     <div class="dropdown-menu-button"><i class="zmdi zmdi-home zmdi-hc-fw"></i>&nbsp;&nbsp; Aulas <i class="zmdi zmdi-chevron-down pull-right zmdi-hc-fw"></i></div>
                     <ul class="list-unstyled">
                         <li><a href="{{ route('equipamiento.index') }}"><i class="zmdi zmdi-money zmdi-hc-fw"></i>&nbsp;&nbsp; Equipamiento</a></li>
+                        <li><a href="{{ route('aulas.index') }}"><i class="zmdi zmdi-money zmdi-hc-fw"></i>&nbsp;&nbsp; Aulas</a></li>
                     </ul>
                 </li>
 

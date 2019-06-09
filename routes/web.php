@@ -67,3 +67,6 @@ Route::get('mensualidad/buscar','StudentPaymentController@search');
 
 
 Route::resource('equipamiento','AssetsController');
+Route::resource('aulas','ClassRoomController');
+Route::put('aula/activar/{id}','ClassRoomController@active');
+Route::put('aula/desactivar/{id}','ClassRoomController@desactive');
