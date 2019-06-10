@@ -86,21 +86,28 @@
                         <th>Nº</th>
                         <th>Descripcion de pago</th>
                         <th>Precio</th>
+                        <th>Descuento</th>
+                        <th>Sub Total</th>
                       </tr>
                     </thead>
                     <tbody>
                       {{ $c=0 }}
                       @foreach($detalles as $d)
+                      {{ $subt = ($d->price * $d->discount) / 100 }}
                       <tr>
                         <td>{{ $c++ }}</td>
                         <td>{{ $d->description }}</td>
                         <td>{{ $d->price }}</td>
+                        <td>{{ $subt}}</td>
+                        <td>{{ $d->price - $subt}}</td>
                       </tr>
                       @endforeach
                       @foreach($payment as $p)
                       <tr>
                         <td></td>
                         <td></td>
+                        <td></td>
+                        <td><strong>Total:</strong></td>
                         <td colspan="4" rowspan="" headers="">{{ $p->total_payment }}</td>
                       </tr>
                       @endforeach
@@ -115,7 +122,7 @@
           </div>
           <div class="row">
             <div class="col-md-12">
-              <button class="btn btn-secondary">Cerrar</button>
+              <a href="{{ route('pagos.index') }}" class="btn btn-secondary">Cerrar</a>
               <button class="btn btn-success" id="agregar">Aceptar</button>
             </div>
           </div>

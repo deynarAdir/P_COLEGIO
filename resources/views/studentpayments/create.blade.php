@@ -95,6 +95,8 @@
                         <th>Nº</th>
                         <th>Descripcion de pago</th>
                         <th>Precio</th>
+                        <th>Descuento</th>
+                        <th>SubTotal</th>
                         <th>Acciones</th>
                       </tr>
                     </thead>
@@ -111,7 +113,7 @@
           </div>
           <div class="row">
             <div class="col-md-12">
-              <button class="btn btn-secondary">Cerrar</button>
+              <a href="{{ route('pagos.index') }}" class="btn btn-secondary">Cerrar</a>
               <button class="btn btn-success" id="agregar">Aceptar</button>
             </div>
           </div>
@@ -131,9 +133,6 @@
                 <div class="nav navbar-right">
                 </div>
                 <div class="clearfix"></div>
-              </div>
-              <div class="form-group m-4">
-                <input type="text" class="form-control" placeholder="Buscar" id="buscar-mensualidades">
               </div>
               <div class="x_content table-responsive">
                 <table class="table table-striped table-bordered">
@@ -162,8 +161,9 @@
 @section('scripts')
 <script>
   let mensualidades = [];
+  let id_student = 0;
+  let descuento;
   let total_pago;
-  var arr = ['hola','como','estas'];
   var students = {!! $students !!};
   console.log(students);
   var stu = students.map( e => e.ci);
@@ -178,6 +178,7 @@
         success: function(data){
           console.log(data);
           $('#id_student').val(data.student.iduser);
+          id_student = $('#id_student').val();
           if(data.student.paternal == "" || data.student.paternal == null){
             $('#nombre-estudiante').val(data.student.name+" "+data.student.maternal);  
           }else if(data.student.maternal == "" || data.student.maternal == null){
@@ -190,58 +191,27 @@
     }
   });
   console.log(stu);
-    
-  $('#buscar-mensualidades').keyup(function() {
-    let juntar3;
-    let pal = $('#buscar-mensualidades').val();
-    console.log(pal);
-    $.ajax({
-      url: "{{ url('mensualidad/buscar') }}",
-      method: "GET",
-      data: {
-        buscar: pal
-      },
-      success: function(data){
-        console.log(data.monthlypayments.data); 
-        for (var i = 0;i<data.monthlypayments.data.length;i++) {
-            juntar3+=`<tr>
-              <td> ${data.monthlypayments.data[i].idmonthly_payment} </td>
-              <td> ${data.monthlypayments.data[i].description} </td>
-              <td> ${data.monthlypayments.data[i].start_date} </td>
-              <td> ${data.monthlypayments.data[i].end_date} </td>
-              <td> ${data.monthlypayments.data[i].price} </td>
-              <td>
-                <button type="button" class="btn btn-success btn-xs seleccionado modal-ml"
-                    data-id="${data.monthlypayments.data[i].idmonthly_payment}"
-                    data-description="${data.monthlypayments.data[i].description}">
-                    <i class="glyphicon glyphicon-plus"></i>
-                </button>
-              </td>
-          </tr>`;
-        }
-        $('#tabla-mensualidades').html(juntar3);
-      }
-    });
-  });
   $('#btn-mensualidades').click(function() {
     let juntar;
     $.ajax({
-      url: "{{ url('obtener/mensualidades') }}",
+      url: "{{ url('obtener/mensualidades') }}/"+id_student,
       method: "GET",
       success: function(data){
-        console.log(data.monthly.data); 
-        for (var i = 0;i<data.monthly.data.length;i++) {
+        console.log(data.discount);
+        console.log(data.feeStudent.data);
+        descuento = data.discount;
+        for (var i = 0;i<data.feeStudent.data.length;i++) {
             juntar+=`<tr>
-              <td> ${data.monthly.data[i].idmonthly_payment} </td>
-              <td> ${data.monthly.data[i].description} </td>
-              <td> ${data.monthly.data[i].start_date} </td>
-              <td> ${data.monthly.data[i].end_date} </td>
-              <td> ${data.monthly.data[i].price} </td>
+              <td> ${data.feeStudent.data[i].idstudent_fee} </td>
+              <td> ${data.feeStudent.data[i].description} </td>
+              <td> ${data.feeStudent.data[i].start_date} </td>
+              <td> ${data.feeStudent.data[i].end_date} </td>
+              <td> ${data.feeStudent.data[i].price} </td>
               <td>
                 <button type="button" class="btn btn-success btn-xs seleccionado modal-ml"
-                    data-id="${data.monthly.data[i].idmonthly_payment}"
-                    data-description="${data.monthly.data[i].description}"
-                    data-precio="${data.monthly.data[i].price}">
+                    data-id="${data.feeStudent.data[i].idstudent_fee}"
+                    data-description="${data.feeStudent.data[i].description}"
+                    data-precio="${data.feeStudent.data[i].price}">
                     <i class="glyphicon glyphicon-plus"></i>
                 </button>
               </td>
@@ -273,6 +243,7 @@
         $('#description-1').val(descripcion);
         juntarLlenado();
       }
+      console.log(mensualidades);
   });
   function verificarRepetido(id){
     let sw=false;
@@ -292,12 +263,15 @@
   });
   function juntarLlenado(){
     let juntar2;
+    descuento = (mensualidades[0].price * descuento)/100;
     let sumador=0;
     for (var i = 0;i<mensualidades.length;i++) {
         juntar2+=`<tr>
           <td> ${mensualidades[i].mensualidad_id} </td>
           <td> ${mensualidades[i].descripcion} </td>
           <td> ${mensualidades[i].price} </td>
+          <td> ${descuento} </td>
+          <td> ${mensualidades[i].price - descuento} </td>
           <td>
             <button type="button" class="btn btn-danger btn-xs eliminar-lista modal-ml"
                 data-id="${mensualidades[i].id}"
@@ -306,11 +280,13 @@
             </button>
           </td>
       </tr>`
-      sumador=sumador+ parseFloat(mensualidades[i].price);
+      sumador=sumador+ parseFloat(mensualidades[i].price - descuento);
     }
     juntar2+=`<tr>
       <td></td>
       <td></td>
+      <td></td>
+      <td><strong>   Total Pago:</strong> </td>
       <td colspan="4" rowspan="" headers="">${sumador}</td>
     </tr>`;
     $('#llenado').html(juntar2);

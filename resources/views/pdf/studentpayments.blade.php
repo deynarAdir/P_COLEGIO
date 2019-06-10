@@ -176,29 +176,24 @@
                         <tr id="fa">
                             <th>Mensualidad</th>
                             <th>Precio unitario</th>
-                            <th>PRECIO TOTAL</th>
+                            <th>Descuento</th>
+                            <th>Sub Total</th>
                         </tr>
                     </thead>
                     <tbody>
                     	@foreach($detalles as $d)
+                        {{ $subt = ($d->price * $d->discount) / 100 }}
                         <tr>
                             <td>{{ $d->description }}</td>
                             <td>{{ $d->price }}</td>
-                            <td>{{ $d->price}}</td>
+                            <td>{{ $subt}}</td>
+                            <td>{{ $d->price - $subt}}</td>
                         </tr>
                         @endforeach
                     </tbody>
                     <tfoot>
                     	@foreach($payment as $p)
                         <tr>
-                            <th></th>
-                            <th></th>
-                            <th></th>
-                            <th>SUBTOTAL</th>
-                            <td>{{ round($p->total_payment) }}</td>
-                        </tr>
-                        <tr>
-                            <th></th>
                             <th></th>
                             <th></th>
                             <th>TOTAL</th>
