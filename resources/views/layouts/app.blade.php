@@ -1,4 +1,4 @@
-<!-- 
+<!--
 * Copyright 2016 Carlos Eduardo Alfaro Orellana
 -->
 <!DOCTYPE html>
@@ -26,10 +26,11 @@
     @include('layouts.leftNavigation')
     <div class="content-page-container full-reset custom-scroll-containers">
         @include('layouts.topNavigation')
-            
+
         @yield('content')
 
         @include('layouts.footer')
     </div>
+    @yield('script')
 </body>
 </html>

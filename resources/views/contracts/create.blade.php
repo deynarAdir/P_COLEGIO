@@ -40,49 +40,45 @@
                         </div>
                     </div>
                 </form>
-                <form method="POST" action="{{ route('secretary.store')}}" enctype="multipart/form-data" target="_blank">
-                    @csrf
-                    <div class="row">
-                        <div class="col-md-12 col-md-10 col-md-offset-1">
-                            <legend>Resultados de la busqueda</legend>
-                            <br>
+                <div class="row">
+                    <div class="col-md-12 col-md-10 col-md-offset-1">
+                        <legend>Resultados de la busqueda</legend>
+                        <br>
+                        <div class="table-responsive">
+                            <div class="div-table" style="margin:0 !important;">
+                                <div class="div-table-row div-table-row-list" style="background-color:#DFF0D8; font-weight:bold;">
+                                    <div class="div-table-cell" style="width: 20%;">Nombre</div>
+                                    <div class="div-table-cell" style="width: 20%;">Apellidos</div>
+                                    <div class="div-table-cell" style="width: 20%;">CI</div>
+                                    <div class="div-table-cell" style="width: 20%;">Rol</div>
+                                    <div class="div-table-cell" style="width: 10%;">Crear</div>
+                                </div>
+                            </div>
+                            @foreach($users as $us)
                             <div class="table-responsive">
                                 <div class="div-table" style="margin:0 !important;">
-                                    <div class="div-table-row div-table-row-list" style="background-color:#DFF0D8; font-weight:bold;">
-                                        <div class="div-table-cell" style="width: 20%;">Nombre</div>
-                                        <div class="div-table-cell" style="width: 20%;">Apellidos</div>
-                                        <div class="div-table-cell" style="width: 20%;">CI</div>
-                                        <div class="div-table-cell" style="width: 20%;">Rol</div>
-                                        <div class="div-table-cell" style="width: 10%;">Crear</div>
-                                    </div>
-                                </div>
-                                @foreach($users as $us)
-                                <div class="table-responsive">
-                                    <div class="div-table" style="margin:0 !important;">
-                                        <div class="div-table-row div-table-row-list">
-                                            <div class="div-table-cell" style="width: 20%;">{{ $us->name }}</div>
-                                            <div class="div-table-cell" style="width: 20%;">{{ $us->paternal }} </div>
-                                            <div class="div-table-cell" style="width: 20%;">{{ $us->ci}}</div>
-                                            <div class="div-table-cell" style="width: 20%;">{{'ROL'}}</div>
-                                            <div class="div-table-cell" style="width: 10%;">
-                                                <form method="POST" action="#">
-                                                    @csrf
-                                                    @method('DELETE')
-                                                    <button class="btn btn-success" onclick="return confirm('Esta seguro de eliminar el registro?')"><i class="zmdi zmdi-plus-circle-o"></i></i></button>
-                                                </form>
-                                            </div>
+                                    <div class="div-table-row div-table-row-list">
+                                        <div class="div-table-cell" style="width: 20%;">{{ $us->name }}</div>
+                                        <div class="div-table-cell" style="width: 20%;">{{ $us->paternal }} </div>
+                                        <div class="div-table-cell" style="width: 20%;">{{ $us->ci}}</div>
+                                        <div class="div-table-cell" style="width: 20%;">{{'ROL'}}</div>
+                                        <div class="div-table-cell" style="width: 10%;">
+                                            <form method="" action="#">
+                                                @csrf
+                                                <button class="btn btn-success"><i class="zmdi zmdi-plus-circle-o"></i></i></button>
+                                            </form>
                                         </div>
                                     </div>
                                 </div>
-                                @endforeach
                             </div>
+                            @endforeach
                         </div>
                     </div>
-                </form>
+                </div>
             </div>
         </div>
     </div>
-    <div class="col-md-6">
+    <div class="col-md-6" id="createF">
         <div class="container-fluid">
             <div class="container-flat-form">
                 <div class="title-flat-form title-flat-blue">Registrar un nuevo contrato</div>
@@ -159,4 +155,8 @@
 </div>
 
 
+@endsection
+
+@section('script')
+    <script src="{{ asset('js/createContract.js') }}"></script>
 @endsection
