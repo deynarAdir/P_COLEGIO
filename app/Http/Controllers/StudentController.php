@@ -3,6 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Student;
+use App\User;
+use App\Degree;
+use App\Parallel;
+use App\Document;
+use App\Manager;
 use Illuminate\Http\Request;
 
 class StudentController extends Controller
@@ -14,7 +19,14 @@ class StudentController extends Controller
      */
     public function index()
     {
-        //
+        $manager = Manager::with('user')->get();
+        $student = Student::with(['user','parallel','degree','manager'])->get();
+
+        return view('students.index',[
+            'students' => $student,
+            'managers' => $manager
+        ]);
+        //return ($manager);
     }
 
     /**

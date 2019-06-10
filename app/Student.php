@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Student extends Model
 {
     public function document(){
-        return $this->hasMany(Document::class,'id_student');
+        return $this->hasMany(Document::class,'id_student','idstudent');
     }
 
     public function user(){
@@ -15,6 +15,15 @@ class Student extends Model
     }
 
     public function manager(){
-        return $this->belongsTo(Manager::class,'id_manager');
+        return $this->belongsTo(Manager::class,'id_manager','idmanager');
     }
+
+    public function degree(){
+        return $this->belongsTo(degree::class,'id_degree','iddegree');
+    }
+
+    public function parallel(){
+        return $this->belongsTo(Parallel::class,'id_parallel','idparallel');
+    }
+
 }

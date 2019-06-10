@@ -7,6 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 class Document extends Model
 {
     public function student(){
-        return $this->hasOne(Student::class);
+        return $this->belongsTo(Student::class,'id_document');
     }
 }

@@ -40,14 +40,15 @@ class User extends Authenticatable
     ];
 
     public function rol(){
-        return $this->hasOne(Rol::class,'idrol','iduser');
+        return $this->belongsTo(Rol::class,'id_rol','idrol');
     }
 
     public function manager(){
-        return $this->hasMany(Manager::class,'id_user');
+        return $this->hasMany(Manager::class,'id_user','iduser');
     }
 
     public function student(){
         return $this->hasMany(Student::class,'id_user','iduser');
     }
+
 }

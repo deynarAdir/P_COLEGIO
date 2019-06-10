@@ -54,10 +54,9 @@ class InscriptionController extends Controller
         $student = new Student;
 
         $user = new User;
-        //$degrees = Degree::findOrFail($request->id_degree);
 
 
-       /* $user->name = $request->name;
+        $user->name = $request->name;
         $user->paternal = $request->paternal;
         $user->maternal = $request->maternal;
         $user->gender = $request->gender;
@@ -72,7 +71,7 @@ class InscriptionController extends Controller
         $user = User::all()->last();
 
         $student->id_user= $user->iduser;
-        $student->id_manager = $request->id_manager->idmanager;
+        $student->id_manager = $request->id_manager;
         $student->id_degree = $request->id_degree;
         $student->id_parallel = $request->id_parallel;
         $student->student_status ='0';
@@ -92,9 +91,11 @@ class InscriptionController extends Controller
         $document->photocopy_legalized_notebook = $request->photocopy_legalized_notebook;
         $document->original_notepad = $request->original_notepad;
 
-        $document->save();*/
+        $document->save();
 
-        return ($request);
+        return redirect()->route('students.index');
+
+        //return ($request);
 
     }
 

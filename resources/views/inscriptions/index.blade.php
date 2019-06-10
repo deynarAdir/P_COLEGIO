@@ -48,7 +48,7 @@
                                 <span>Tutor</span>
                                 <select name="id_manager" class="material-control tooltips-general" data-toggle="tooltip" data-placement="top" title="Elige la sección encargada del docente">
                                         @foreach ($users as $u)
-                                        <option  value="{{$u->manager}}" >{{$u->name}}-{{$u->paternal}}-{{$u->ci}}</option>
+                                        <option  value="{{$u->manager[0]->idmanager}}" >{{$u->name}}-{{$u->paternal}}-{{$u->ci}}</option>
                                         @endforeach
 
                                 </select>
@@ -122,35 +122,35 @@
                         </div>
 
                         <div class="group-material">
-                            <input value="true" type="checkbox" class="material-control tooltips-general" placeholder="ej: 7485461" required="" maxlength="70" data-toggle="tooltip" data-placement="top" name="ci_photocopy" title="Ingresa el numero telefonico del estudiante">
+                            <input value="1" type="checkbox" class="material-control tooltips-general" placeholder="ej: 7485461" required="" maxlength="70" data-toggle="tooltip" data-placement="top" name="ci_photocopy" title="Ingresa el numero telefonico del estudiante">
                             <span class="highlight"></span>
                             <span class="bar"></span>
                             <label>FOTOCOPIA DE CI</label>
                         </div>
 
                         <div class="group-material">
-                            <input value="true" type="checkbox" class="material-control tooltips-general" placeholder="ej: 7485461" required="" maxlength="70" data-toggle="tooltip" data-placement="top" name="birth_certificate_original" title="Ingresa el numero telefonico del estudiante">
+                            <input value="1" type="checkbox" class="material-control tooltips-general" placeholder="ej: 7485461" required="" maxlength="70" data-toggle="tooltip" data-placement="top" name="birth_certificate_original" title="Ingresa el numero telefonico del estudiante">
                             <span class="highlight"></span>
                             <span class="bar"></span>
                             <label>CERTIFICADO DE NACIMIENTO ORIGINAL</label>
                         </div>
 
                         <div class="group-material">
-                            <input value="true" type="checkbox" class="material-control tooltips-general" value="" required=""  data-toggle="tooltip" data-placement="top" name="rude" title="Ingresa el numero telefonico del estudiante">
+                            <input value="1" type="checkbox" class="material-control tooltips-general" value="" required=""  data-toggle="tooltip" data-placement="top" name="rude" title="Ingresa el numero telefonico del estudiante">
                             <span class="highlight"></span>
                             <span class="bar"></span>
                             <label>RUDE</label>
                         </div>
 
                         <div class="group-material">
-                            <input value="true" type="checkbox" class="material-control tooltips-general" placeholder="ej: 7485461" required="" maxlength="70" data-toggle="tooltip" data-placement="top" name="photocopy_legalized_notebook" title="Ingresa el numero telefonico del estudiante">
+                            <input value="1" type="checkbox" class="material-control tooltips-general" placeholder="ej: 7485461" required="" maxlength="70" data-toggle="tooltip" data-placement="top" name="photocopy_legalized_notebook" title="Ingresa el numero telefonico del estudiante">
                             <span class="highlight"></span>
                             <span class="bar"></span>
                             <label>FOTOCOPIA LEGALIZADA DE LIBRETA DE NOTAS</label>
                         </div>
 
                         <div class="group-material">
-                            <input value="true" type="checkbox" class="material-control tooltips-general" placeholder="ej: 7485461" required="" maxlength="70" data-toggle="tooltip" data-placement="top" name="original_notepad" title="Ingresa el numero telefonico del estudiante">
+                            <input value="1" type="checkbox" class="material-control tooltips-general" placeholder="ej: 7485461" required="" maxlength="70" data-toggle="tooltip" data-placement="top" name="original_notepad" title="Ingresa el numero telefonico del estudiante">
                             <span class="highlight"></span>
                             <span class="bar"></span>
                             <label>LIBRETA ORIGINAL</label>

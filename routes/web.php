@@ -67,3 +67,5 @@ Route::resource('managers','ManagerController');
 
 Route::resource('inscriptions','InscriptionController');
 
+Route::resource('students','StudentController');
+
