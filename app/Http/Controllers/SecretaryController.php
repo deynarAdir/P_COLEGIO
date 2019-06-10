@@ -16,7 +16,7 @@ class SecretaryController extends Controller
      */
     public function index(Request $request)
     {
-        $users = User::search($request->searchName)->where('id_rol','=',3)->where('estate','=',1)->get();
+        $users = User::searchUser($request->searchName)->where('id_rol','=',3)->where('estate','=',1)->get();
         return view('secretaries.index',compact('users'));
     }
 

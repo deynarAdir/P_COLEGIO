@@ -5,6 +5,7 @@ namespace App;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use App\Rol;
 
 class User extends Authenticatable
 {
@@ -47,8 +48,23 @@ class User extends Authenticatable
         return $this->hasMany('App\Secretary','id_user');
     }
 
-    public function scopeSearch($query, $name){
+    public function contracts(){
+        return $this->hasMany('App\Contract', 'id_user');
+    }
+
+    //buscar un usuario por nombre o ci
+    public function scopeSearchUser($query, $name){
         if($name)
             return $query->where('name','LIKE',"%$name%")->orWhere('ci','LIKE',"%$name%");
+    }
+    //buscar por nombre
+    public function scopeSearchName($query, $name){
+        if($name)
+            return $query->orWhere('name','LIKE',"%$name%");
+    }
+    // buscar usuario por roles
+    public function scopeSearchCI($query, $ci){
+        if($ci)
+            return $query->orWhere('ci','LIKE',"%$ci%");
     }
 }

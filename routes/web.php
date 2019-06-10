@@ -62,3 +62,5 @@ Route::resource('monthly','MonthlyPaymentController');
 Route::resource('teacher', 'TeacherController');
 
 Route::resource('secretary','SecretaryController');
+
+Route::resource('contract', 'ContractController');
