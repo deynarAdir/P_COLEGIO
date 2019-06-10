@@ -7,7 +7,7 @@
         </div>
         <div class="full-reset" style="background-color:#2B3D51; padding: 10px 0; color:#fff;">
             <figure>
-                <img src="assets/assets/img/logo.png" alt="Biblioteca" class="img-responsive center-box" style="width:55%;">
+                <img src="{!! asset('assets/assets/img/logo.png') !!}" alt="Biblioteca" class="img-responsive center-box" style="width:55%;">
             </figure>
             <p class="text-center" style="padding-top: 15px;">COLEGIO</p>
         </div>
@@ -46,12 +46,8 @@
                 <li>
                     <div class="dropdown-menu-button"><i class="zmdi zmdi-alarm zmdi-hc-fw"></i>&nbsp;&nbsp; Finanzas <i class="zmdi zmdi-chevron-down pull-right zmdi-hc-fw"></i></div>
                     <ul class="list-unstyled">
-                        <li><a href="{{ route('pensiones.index') }}"><i class="zmdi zmdi-calendar zmdi-hc-fw"></i>&nbsp;&nbsp; Pensiones</a></li>
-                        <li><a href="{{ route('monthly.index') }}"><i class="zmdi zmdi-money zmdi-hc-fw"></i>&nbsp;&nbsp; Mensualidades</a></li>
-                        <li>
-
-                            <a href="loanpending.html"><i class="zmdi zmdi-time-restore zmdi-hc-fw"></i>&nbsp;&nbsp; Devoluciones pendientes <span class="label label-danger pull-right label-mhover">7</span></a>
-                        </li>
+                        <li><a href="{{ route('cuotas.index') }}"><i class="zmdi zmdi-money zmdi-hc-fw"></i>&nbsp;&nbsp; Cuotas</a></li>
+                        <li><a href="{{ route('pagos.index') }}"><i class="zmdi zmdi-calendar zmdi-hc-fw"></i>&nbsp;&nbsp; Pagos</a></li>
                         <li>
                             <a href="loanreservation.html"><i class="zmdi zmdi-timer zmdi-hc-fw"></i>&nbsp;&nbsp; Reservaciones <span class="label label-danger pull-right label-mhover">7</span></a>
                         </li>

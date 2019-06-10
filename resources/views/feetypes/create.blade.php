@@ -10,7 +10,7 @@
         <div class="col-xs-12 lead">
             <ol class="breadcrumb">
                 <li class="active">Agregar nuevo</li>
-                <li><a href="{{ route('monthly.index') }}">listado de pensiones</a></li>
+                <li><a href="{{ route('cuotas.index') }}">listado de pensiones</a></li>
             </ol>
         </div>
     </div>
@@ -18,23 +18,16 @@
 <div class="container-fluid">
     <div class="container-flat-form">
         <div class="title-flat-form title-flat-blue">Registrar nueva Pension</div>
-        <form method="POST" action="{{ route('monthly.store') }}">
+        <form method="POST" action="{{ route('cuotas.store') }}">
             @csrf
             <div class="row">
                <div class="col-xs-12 col-sm-8 col-sm-offset-2">
                     
                     <div class="group-material">
-                        <input type="date" class="material-control tooltips-general" placeholder="Fecha Inicial" required="" maxlength="200" data-toggle="tooltip" data-placement="top" title="Fecha de inicio de Mensualidad" name="start_date">
+                        <input type="number" class="material-control tooltips-general" placeholder="Decuento" required="" maxlength="200" data-toggle="tooltip" data-placement="top" title="Fecha de inicio de Mensualidad" name="discount">
                         <span class="highlight"></span>
                         <span class="bar"></span>
-                        <label>Fecha inicial</label>
-                    </div>
-
-                    <div class="group-material">
-                        <input type="date" class="material-control tooltips-general" placeholder="Fecha Final" required="" maxlength="200" data-toggle="tooltip" data-placement="top" title="Fecha final de Mensualidad" name="end_date">
-                        <span class="highlight"></span>
-                        <span class="bar"></span>
-                        <label>Fecha Final</label>
+                        <label>Descuento de cuota</label>
                     </div>
 
                     <div class="group-material">

@@ -25,5 +25,7 @@ class Student extends Model
     public function parallel(){
         return $this->belongsTo(Parallel::class,'id_parallel','idparallel');
     }
+    protected $table = 'students';
 
+    protected $primaryKey = 'idstudent';
 }

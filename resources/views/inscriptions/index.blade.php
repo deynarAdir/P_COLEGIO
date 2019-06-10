@@ -44,6 +44,16 @@
                                 </select>
                         </div>
 
+                        <div class=" group-material ">
+                                <span>Tipo de Pago</span>
+                                <select name="id_fee" class="material-control tooltips-general" data-toggle="tooltip" data-placement="top" title="Elige la sección encargada del docente">
+                                    <option value="" disabled="" selected="">Selecciona un tipo de pago</option>
+                                        @foreach ($types as $t)
+                                            <option value="{{$t->description}}" >{{$t->description}}</option>
+                                        @endforeach
+
+                                </select>
+                        </div>
                         <div class="group-material ">
                                 <span>Tutor</span>
                                 <select name="id_manager" class="material-control tooltips-general" data-toggle="tooltip" data-placement="top" title="Elige la sección encargada del docente">

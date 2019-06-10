@@ -2,15 +2,16 @@
 
 namespace App\Http\Controllers;
 
-use App\inscription;
 use App\Degree;
-use App\Parallel;
-use App\User;
-use App\Rol;
 use App\Document;
+use App\FeeType;
 use App\Manager;
+use App\Parallel;
+use App\Rol;
 use App\Student;
-
+use App\StudentFee;
+use App\User;
+use App\inscription;
 use Illuminate\Http\Request;
 
 class InscriptionController extends Controller
@@ -23,12 +24,14 @@ class InscriptionController extends Controller
     public function index()
     {
         $degrees=Degree::all();
+        $types=FeeType::all();
         $parallels=Parallel::all();
         $users=User::with(['manager','rol'])->where('id_rol','2')->get();
         return view('inscriptions.index',[
             'degrees' => $degrees,
             'parallels' => $parallels,
-            'users' => $users
+            'users' => $users,
+            'types' => $types
         ]);
     }
 
@@ -50,6 +53,7 @@ class InscriptionController extends Controller
      */
     public function store(Request $request)
     {
+        $fecha_inicial = date('2019-01-01');
         $document = new Document;
         $student = new Student;
 
@@ -65,7 +69,7 @@ class InscriptionController extends Controller
         $user->password = bcrypt($request->ci);
         $user->ci =$request->ci;
         $user->cellphone = $request->cellphone;
-        $user->id_rol = '3';
+        $user->id_rol = '4';
 
         $user->save();
         $user = User::all()->last();
@@ -74,16 +78,28 @@ class InscriptionController extends Controller
         $student->id_manager = $request->id_manager;
         $student->id_degree = $request->id_degree;
         $student->id_parallel = $request->id_parallel;
+        $student->id_fee = $request->id_fee;
         $student->student_status ='0';
         $student->blood_type = $request->blood_type;
         $student->age = $request->age;
 
         $student->save();
+        $type_price = FeeType::first();
+        $price = $type_price->price;
+        $price_t = ($price * 10) / $request->id_fee;
         $student = Student::all()->last();
-
-        //$degrees->quantity =$degrees->quatity + '1';
-        //$degrees->save();
-
+        $div = 10 / $request->id_fee;
+        for($i = 1; $i <= $request->id_fee; $i++){
+            $fecha_inicial = date("Y-m-d",strtotime($fecha_inicial."+ ".$div." month"));
+            $fecha_final = date("Y-m-d",strtotime($fecha_inicial."+ 27 days")); 
+            $studentFee = new StudentFee;
+            $studentFee->id_student = $student->idstudent;
+            $studentFee->description = 'pagos si o si';
+            $studentFee->price = $price_t;
+            $studentFee->start_date = $fecha_inicial;
+            $studentFee->end_date = $fecha_final;
+            $studentFee->save(); 
+        }
         $document->id_student = $student->idstudent;
         $document->rude = $request->rude;
         $document->ci_photocopy = $request->ci_photocopy;

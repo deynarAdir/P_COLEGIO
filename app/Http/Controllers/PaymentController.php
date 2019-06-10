@@ -2,10 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\MonthlyPayment;
 use Illuminate\Http\Request;
 
-class MonthlyPaymentController extends Controller
+class PaymentController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,8 +13,7 @@ class MonthlyPaymentController extends Controller
      */
     public function index()
     {
-        $monthly = MonthlyPayment::orderBy('idmonthly_payment','desc')->paginate(10);
-        return view('monthlypayments.index',['monthly'=> $monthly]);
+        
     }
 
     /**
@@ -25,7 +23,7 @@ class MonthlyPaymentController extends Controller
      */
     public function create()
     {
-        return view('monthlypayments.create');
+        
     }
 
     /**
@@ -36,12 +34,18 @@ class MonthlyPaymentController extends Controller
      */
     public function store(Request $request)
     {
-        $monthly = new MonthlyPayment;
-        $monthly->start_date=$request->start_date;
-        $monthly->end_date= $request->end_date;
-        $monthly->description=$request->description;
-        $monthly->save();
-        return redirect()->route('monthly.index');
+        $fecha = Carbon::now('America/La_Paz');
+        $payment = new Payment;
+        $payment->id_student = $request->id_student;
+        $payment->id_user = Auth::user()->iduser;
+        $payment->nit_ci = $request->nit_ci;
+        $payment->date = $fecha->toDateString();
+        $payment->invoice_series = $request->invoice_series;
+        $payment->invoice_number = $request->invoice_number;
+        $payment->total_payment = $request->total_payment;
+        $payment->state = 'regitrado';
+        $payment->save();
+        
     }
 
     /**
@@ -77,12 +81,7 @@ class MonthlyPaymentController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $monthly = MonthlyPayment::findOrFail($id);
-        $monthly -> start_date = $request -> start_date;
-        $monthly -> end_date =  $request -> end_date;
-        $monthly -> description = $request -> description;
-        $monthly -> save();
-        return redirect()->route('monthly.index');
+        //
     }
 
     /**

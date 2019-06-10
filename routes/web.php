@@ -69,3 +69,13 @@ Route::resource('inscriptions','InscriptionController');
 
 Route::resource('students','StudentController');
 
+Route::resource('cuotas','FeeTypeController', ['except' => ['show']]);
+Route::put('cuotas/activar/{id}','FeeTypeController@active');
+Route::put('cuotas/desactivar/{id}','FeeTypeController@desactive');
+Route::resource('pagos','StudentPaymentController');
+Route::get('obtener/mensualidades/{id}', 'StudentPaymentController@getMonthly');
+Route::get('obtener/estudiante/{ci}','StudentPaymentController@getStudent');
+Route::get('mensualidad/buscar','StudentPaymentController@search');
+
+Route::get('pago/pdf/{id}','StudentPaymentController@pdf');
+Route::get('pagos/detalle/{id}','StudentPaymentController@detallePago');
