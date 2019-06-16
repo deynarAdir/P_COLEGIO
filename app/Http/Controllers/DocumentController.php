@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Document;
 use Illuminate\Http\Request;
 
-class PaymentController extends Controller
+class DocumentController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,7 +14,7 @@ class PaymentController extends Controller
      */
     public function index()
     {
-        
+        //
     }
 
     /**
@@ -23,7 +24,7 @@ class PaymentController extends Controller
      */
     public function create()
     {
-        
+        //
     }
 
     /**
@@ -34,27 +35,16 @@ class PaymentController extends Controller
      */
     public function store(Request $request)
     {
-        $fecha = Carbon::now('America/La_Paz');
-        $payment = new Payment;
-        $payment->id_student = $request->id_student;
-        $payment->id_user = Auth::user()->iduser;
-        $payment->nit_ci = $request->nit_ci;
-        $payment->date = $fecha->toDateString();
-        $payment->invoice_series = $request->invoice_series;
-        $payment->invoice_number = $request->invoice_number;
-        $payment->total_payment = $request->total_payment;
-        $payment->state = 'regitrado';
-        $payment->save();
-        
+        //
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Document  $document
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Document $document)
     {
         //
     }
@@ -62,24 +52,22 @@ class PaymentController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Document  $document
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Document $document)
     {
-        //$monthly = MonthlyPayment::findOrFail($id);
-        //return view('monthlypayments.edit',['monthly'=> $monthly]);
-        return view("degrees.create");
+        //
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \App\Document  $document
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Document $document)
     {
         //
     }
@@ -87,10 +75,10 @@ class PaymentController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \App\Document  $document
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Document $document)
     {
         //
     }

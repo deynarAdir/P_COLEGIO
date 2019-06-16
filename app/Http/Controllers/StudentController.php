@@ -2,9 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Student;
+use App\User;
+use App\Degree;
+use App\Parallel;
+use App\Document;
+use App\Manager;
 use Illuminate\Http\Request;
 
-class PaymentController extends Controller
+class StudentController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,7 +19,14 @@ class PaymentController extends Controller
      */
     public function index()
     {
-        
+        $manager = Manager::with('user')->get();
+        $student = Student::with(['user','parallel','degree','manager'])->get();
+
+        return view('students.index',[
+            'students' => $student,
+            'managers' => $manager
+        ]);
+        //return ($manager);
     }
 
     /**
@@ -23,7 +36,7 @@ class PaymentController extends Controller
      */
     public function create()
     {
-        
+        //
     }
 
     /**
@@ -34,27 +47,16 @@ class PaymentController extends Controller
      */
     public function store(Request $request)
     {
-        $fecha = Carbon::now('America/La_Paz');
-        $payment = new Payment;
-        $payment->id_student = $request->id_student;
-        $payment->id_user = Auth::user()->iduser;
-        $payment->nit_ci = $request->nit_ci;
-        $payment->date = $fecha->toDateString();
-        $payment->invoice_series = $request->invoice_series;
-        $payment->invoice_number = $request->invoice_number;
-        $payment->total_payment = $request->total_payment;
-        $payment->state = 'regitrado';
-        $payment->save();
-        
+        //
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Student  $student
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Student $student)
     {
         //
     }
@@ -62,24 +64,22 @@ class PaymentController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Student  $student
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Student $student)
     {
-        //$monthly = MonthlyPayment::findOrFail($id);
-        //return view('monthlypayments.edit',['monthly'=> $monthly]);
-        return view("degrees.create");
+        //
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \App\Student  $student
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Student $student)
     {
         //
     }
@@ -87,10 +87,10 @@ class PaymentController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \App\Student  $student
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Student $student)
     {
         //
     }

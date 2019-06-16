@@ -2,14 +2,14 @@
     <div class="visible-xs font-movile-menu mobile-menu-button"></div>
     <div class="full-reset container-menu-movile custom-scroll-containers">
         <div class="logo full-reset all-tittles">
-            <i class="visible-xs zmdi zmdi-close pull-left mobile-menu-button" style="line-height: 55px; cursor: pointer; padding: 0 10px; margin-left: 7px;"></i> 
+            <i class="visible-xs zmdi zmdi-close pull-left mobile-menu-button" style="line-height: 55px; cursor: pointer; padding: 0 10px; margin-left: 7px;"></i>
             sistema bibliotecario
         </div>
         <div class="full-reset" style="background-color:#2B3D51; padding: 10px 0; color:#fff;">
             <figure>
                 <img src="{!! asset('assets/assets/img/logo.png') !!}" alt="Biblioteca" class="img-responsive center-box" style="width:55%;">
             </figure>
-            <p class="text-center" style="padding-top: 15px;">Sistema Bibliotecario</p>
+            <p class="text-center" style="padding-top: 15px;">COLEGIO</p>
         </div>
         <div class="full-reset nav-lateral-list-menu">
             <ul class="list-unstyled">
@@ -17,9 +17,13 @@
                 <li>
                     <div class="dropdown-menu-button"><i class="zmdi zmdi-case zmdi-hc-fw"></i>&nbsp;&nbsp; Administración <i class="zmdi zmdi-chevron-down pull-right zmdi-hc-fw"></i></div>
                     <ul class="list-unstyled">
+                            <li><a href="{{ route('inscriptions.index') }}"><i class="zmdi zmdi-bookmark-outline zmdi-hc-fw"></i>&nbsp;&nbsp; Nueva Inscripción</a></li>
+                        <li><a href="{{ route('parallels.index') }}"><i class="zmdi zmdi-balance zmdi-hc-fw"></i>&nbsp;&nbsp; Paralelos</a></li>
+                        <li><a href="{{ route('degrees.index') }}"><i class="zmdi zmdi-balance zmdi-hc-fw"></i>&nbsp;&nbsp; Cursos</a></li>
+                        <li><a href="{{ route('students.index') }}"><i class="zmdi zmdi-balance zmdi-hc-fw"></i>&nbsp;&nbsp; Estudiantes</a></li>
                         <li><a href="institution.html"><i class="zmdi zmdi-balance zmdi-hc-fw"></i>&nbsp;&nbsp; Datos institución</a></li>
                         <li><a href="provider.html"><i class="zmdi zmdi-truck zmdi-hc-fw"></i>&nbsp;&nbsp; Nuevo proveedor</a></li>
-                        <li><a href="category.html"><i class="zmdi zmdi-bookmark-outline zmdi-hc-fw"></i>&nbsp;&nbsp; Nueva categoría</a></li>
+
                         <li><a href="section.html"><i class="zmdi zmdi-assignment-account zmdi-hc-fw"></i>&nbsp;&nbsp; Nueva sección</a></li>
                     </ul>
                 </li>

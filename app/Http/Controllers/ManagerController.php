@@ -2,9 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Manager;
+use App\User;
+use App\Rol;
+
 use Illuminate\Http\Request;
 
-class PaymentController extends Controller
+class ManagerController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,7 +17,7 @@ class PaymentController extends Controller
      */
     public function index()
     {
-        
+        //
     }
 
     /**
@@ -23,7 +27,7 @@ class PaymentController extends Controller
      */
     public function create()
     {
-        
+        return view('manager.create');
     }
 
     /**
@@ -34,27 +38,34 @@ class PaymentController extends Controller
      */
     public function store(Request $request)
     {
-        $fecha = Carbon::now('America/La_Paz');
-        $payment = new Payment;
-        $payment->id_student = $request->id_student;
-        $payment->id_user = Auth::user()->iduser;
-        $payment->nit_ci = $request->nit_ci;
-        $payment->date = $fecha->toDateString();
-        $payment->invoice_series = $request->invoice_series;
-        $payment->invoice_number = $request->invoice_number;
-        $payment->total_payment = $request->total_payment;
-        $payment->state = 'regitrado';
-        $payment->save();
-        
+        $rol = new Rol;
+        $user =new User;
+        $user->id_rol ='2';
+        $user->name=$request->name;
+        $user->paternal=$request->paternal;
+        $user->paternal=$request->maternal;
+        $user->gender=$request->gender;
+        $user->address=$request->address;
+        $user->email=$request->email;
+        $user->ci=$request->ci;
+        $user->cellphone=$request->cellphone;
+        $user->password=bcrypt($request->ci);
+        $user->save();
+        $user= User::all()->last();
+
+        $manager = new Manager;
+        $manager->id_user=$user->iduser;
+        $manager->save();
+        return redirect()->route('inscriptions.index');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Manager  $manager
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Manager $manager)
     {
         //
     }
@@ -62,24 +73,22 @@ class PaymentController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Manager  $manager
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Manager $manager)
     {
-        //$monthly = MonthlyPayment::findOrFail($id);
-        //return view('monthlypayments.edit',['monthly'=> $monthly]);
-        return view("degrees.create");
+        //
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \App\Manager  $manager
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Manager $manager)
     {
         //
     }
@@ -87,10 +96,10 @@ class PaymentController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \App\Manager  $manager
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Manager $manager)
     {
         //
     }

@@ -57,6 +57,18 @@ Route::get('email/resend', 'Auth\VerificationController@resend')->name('verifica
 
 Route::resource('pensiones','PensionController');
 
+Route::resource('monthly','MonthlyPaymentController');
+
+Route::resource('parallels','ParallelController');
+
+Route::resource('degrees','DegreeController');
+
+Route::resource('managers','ManagerController');
+
+Route::resource('inscriptions','InscriptionController');
+
+Route::resource('students','StudentController');
+
 Route::resource('cuotas','FeeTypeController', ['except' => ['show']]);
 Route::put('cuotas/activar/{id}','FeeTypeController@active');
 Route::put('cuotas/desactivar/{id}','FeeTypeController@desactive');

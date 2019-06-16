@@ -2,7 +2,7 @@
 @section('content')
 <div class="container">
 	    <div class="page-header">
-	      <h1 class="all-tittles">Sistema bibliotecario <small>Inicio</small></h1>
+	      <h1 class="all-tittles">Sistema Estudiantil <small>Inicio</small></h1>
 	    </div>
 	</div>
 	<section class="full-reset text-center" style="padding: 40px 0;">

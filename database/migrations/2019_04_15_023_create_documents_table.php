@@ -16,11 +16,11 @@ class CreateDocumentsTable extends Migration
         Schema::create('documents', function (Blueprint $table) {
             $table->increments('iddocument');
             $table->integer('id_student')->unsigned();
-            $table->integer('ci_photocopy');
-            $table->integer('birth_certificate_original');
-            $table->integer('rude');
-            $table->integer('photocopy_legalized_notebook');
-            $table->integer('original_notepad');
+            $table->boolean('ci_photocopy');
+            $table->boolean('birth_certificate_original');
+            $table->boolean('rude');
+            $table->boolean('photocopy_legalized_notebook');
+            $table->boolean('original_notepad');
             $table->timestamps();
 
             $table->foreign('id_student')->references('idstudent')->on('students');
