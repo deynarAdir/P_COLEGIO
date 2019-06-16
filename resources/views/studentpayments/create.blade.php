@@ -31,7 +31,9 @@
                   <span class="highlight"></span>
                   <span class="bar"></span>
                   <label>C.I de Estudiante:</label>
+                  <span class="text-danger" id="error_ci_student"></span>
               </div>
+              
               <input type="text" hidden name="id_student" id="id_student">
             </div>
             <div class="col-md-4 col-sm-12">
@@ -48,17 +50,18 @@
                   <span class="highlight"></span>
                   <span class="bar"></span>
                   <label>C.I del apoderado:</label>
+                  <span class="text-danger" id="error_nit_ci"></span>
               </div>
             </div>
           </div>
           <div class="row border">
             <div class="col-md-3 col-sm-12">
               <div class="group-material">
-                  <input type="text" class="material-control tooltips-general" placeholder="Introduzca la serie de comprobante" pattern="[0-9-]{1,10}" maxlength="10" data-toggle="tooltip" data-placement="top" title="Solamente números y guiones, 10 dígitos" name="invoice_series" id="invoice_series">
+                  <input type="text" class="material-control tooltips-general" placeholder="Introduzca la serie de comprobante" pattern="[0-9-]{1,10}" maxlength="10" data-toggle="tooltip" data-placement="top" title="Solamente números y guiones, 10 dígitos" name="invoice_series" id="invoice_series" required>
                   <span class="highlight"></span>
                   <span class="bar"></span>
                   <label>Serie de la Factura:</label>
-                  <span>Campo no obligatorio</span>
+                  <span class="text-danger" id="error_invoice_series"></span>
               </div>
             </div>
             <div class="col-md-3 col-sm-12">
@@ -67,6 +70,7 @@
                   <span class="highlight"></span>
                   <span class="bar"></span>
                   <label>Numero de la Factura:</label>
+                  <span class="text-danger" id="error_invoice_number"></span>
               </div>
             </div>
             <div class="col-md-4 col-sm-12">
@@ -87,6 +91,7 @@
                 <div class="x_title">
                   <h2>Detalle de Ingreso de Articulos</h2>
                   <div class="clearfix"></div>
+                  <span class="text-danger" id="error_mensualidades"></span>
                 </div>
                 <div class="x_content table-responsive">
                   <table class="table table-striped table-bordered">
@@ -312,6 +317,36 @@
         window.open('http://localhost:8080/colegio/public/pago/pdf/'+data.id,'_blank');
         console.log(data.id);
         location.href = '{{ route('pagos.index') }}';
+      },
+      error: function(result) {
+        console.log(result);
+        if(result.status == 422){
+          if(result.responseJSON.errors.id_student != null){
+            $('#error_ci_student').html(`<strong>!Error</strong> el estudiante no esta definido`);  
+          }else{
+            $('#error_ci_student').html(``); 
+          }
+          if(result.responseJSON.errors.nit_ci != null){
+            $('#error_nit_ci').html(`<strong>!Error</strong> ${result.responseJSON.errors.nit_ci}`);
+          }else{
+            $('#error_nit_ci').html(``);
+          }
+          if(result.responseJSON.errors.invoice_series != null){
+            $('#error_invoice_series').html(`<strong>!Error</strong> ${result.responseJSON.errors.invoice_series}`);
+          }else{
+            $('#error_invoice_series').html(``);
+          }
+          if(result.responseJSON.errors.invoice_number != null){
+            $('#error_invoice_number').html(`<strong>!Error</strong> ${result.responseJSON.errors.invoice_number}`);
+          }else{
+            $('#error_invoice_number').html(``);
+          }
+          if(result.responseJSON.errors.mensualidades != null){
+            $('#error_mensualidades').html(`<strong>!Error</strong> ${result.responseJSON.errors.mensualidades}`);
+          }else{
+            $('#error_mensualidades').html(``);
+          }
+        }
       }
     });
   });

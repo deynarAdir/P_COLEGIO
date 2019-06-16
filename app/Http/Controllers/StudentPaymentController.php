@@ -7,6 +7,7 @@ use App\Payment;
 use App\Student;
 use App\StudentFee;
 use App\StudentPayment;
+use App\Http\Requests\StoreStudentPayment;
 use App\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -41,7 +42,7 @@ class StudentPaymentController extends Controller
     	return ['student' => $student];
     }
 
-    public function store(Request $request)
+    public function store(StoreStudentPayment $request)
     {
         $fecha = Carbon::now('America/La_Paz');
         $payment = new Payment;

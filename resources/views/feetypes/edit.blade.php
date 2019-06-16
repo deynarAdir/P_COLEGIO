@@ -33,7 +33,7 @@
                     </div>
 
                     <div class="group-material">
-                        <input type="text" value="{{$fee->description}}" class="material-control tooltips-general" placeholder="Descripcion de la Mensualidad" required="" maxlength="70" data-toggle="tooltip" data-placement="top" name="description" title="Escribe la descripcion de la Mensualidad">
+                        <input type="number" value="{{$fee->description}}" class="material-control tooltips-general" placeholder="Escriba el numero de cuota" required="" maxlength="70" data-toggle="tooltip" data-placement="top" name="description" title="Escribe la descripcion de la Mensualidad">
                         <span class="highlight"></span>
                         <span class="bar"></span>
                         <label>Descripcion</label>

@@ -15,7 +15,7 @@ class CreateFeeTypesTable extends Migration
     {
         Schema::create('fee_types', function (Blueprint $table) {
             $table->increments('idfee_type');
-            $table->string('description');
+            $table->integer('description');
             $table->double('price',7,2);
             $table->integer('discount');
             $table->boolean('state')->default(1);

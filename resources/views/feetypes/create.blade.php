@@ -31,7 +31,7 @@
                     </div>
 
                     <div class="group-material">
-                        <input type="text" class="material-control tooltips-general" placeholder="Descripcion de la Mensualidad" required="" maxlength="70" data-toggle="tooltip" data-placement="top" name="description" title="Escribe la descripcion de la Mensualidad">
+                        <input type="number" class="material-control tooltips-general" placeholder="Descripcion de la Mensualidad" required="" maxlength="70" data-toggle="tooltip" data-placement="top" name="description" title="Escriba el numero de cuota(s)">
                         <span class="highlight"></span>
                         <span class="bar"></span>
                         <label>Descripcion</label>
