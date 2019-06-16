@@ -27,7 +27,7 @@ class CreateStudentfeesTable extends Migration
             $table->timestamps();
 
             $table->foreign('id_student')->references('iduser')->on('users');
-            $table->foreign('id_fee_types')->references('idfee_types')->on('fee_types');
+            $table->foreign('id_fee_types')->references('idfee_type')->on('fee_types');
         });
     }
 

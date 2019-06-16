@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 
 class FeeTypeController extends Controller
 {
-<<<<<<< HEAD
+
     /**
      * Display a listing of the resource.
      *
@@ -16,13 +16,7 @@ class FeeTypeController extends Controller
     public function index()
     {
         $fee = FeeType::orderBy('idfee_types','desc')->paginate(5);
-        return view('feetype.index',['fee'=> $fee]);
-=======
-    public function index()
-    {
-        $fee = FeeType::orderBy('idfee_type','desc')->paginate(10);
         return view('feetypes.index',['fee'=> $fee]);
->>>>>>> 94da7ebfa6bb3b9c05f24076503c011fa9e70944
     }
 
     /**
@@ -32,11 +26,7 @@ class FeeTypeController extends Controller
      */
     public function create()
     {
-<<<<<<< HEAD
-        return view('feetype.create');
-=======
         return view('feetypes.create');
->>>>>>> 94da7ebfa6bb3b9c05f24076503c011fa9e70944
     }
 
     /**
@@ -49,17 +39,10 @@ class FeeTypeController extends Controller
     {
         $fee = new FeeType;
         $fee->description=$request->description;
-<<<<<<< HEAD
-        $fee->price= $request->price;
-        $fee->discount=$request->discount;
-        $fee->save();
-        return redirect()->route('feetype.index');
-=======
         $fee->price= 400.00;
         $fee->discount=$request->discount;
         $fee->save();
         return redirect()->route('cuotas.index');
->>>>>>> 94da7ebfa6bb3b9c05f24076503c011fa9e70944
     }
     /**
      * Show the form for editing the specified resource.
@@ -70,11 +53,8 @@ class FeeTypeController extends Controller
     public function edit($id)
     {
         $fee = FeeType::findOrFail($id);
-<<<<<<< HEAD
-        return view('feetype.edit',['fee'=> $fee]);
-=======
         return view('feetypes.edit',['fee'=> $fee]);
->>>>>>> 94da7ebfa6bb3b9c05f24076503c011fa9e70944
+
     }
 
     /**
@@ -88,14 +68,7 @@ class FeeTypeController extends Controller
     {
         $fee = FeeType::findOrFail($id);
         $fee->description=$request->description;
-<<<<<<< HEAD
-        $fee->price= $request->price;
         $fee->discount=$request->discount;
-        $fee->save();
-        return redirect()->route('feetype.index');
-    }
-
-=======
         $fee->discount=$request->discount;
         $fee->save();
         return redirect()->route('cuotas.index');
@@ -117,5 +90,4 @@ class FeeTypeController extends Controller
         $fee->save();
         return redirect()->route('coutas.index');
     }
->>>>>>> 94da7ebfa6bb3b9c05f24076503c011fa9e70944
 }

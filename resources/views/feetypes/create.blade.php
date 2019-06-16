@@ -24,14 +24,14 @@
                <div class="col-xs-12 col-sm-8 col-sm-offset-2">
                     
                     <div class="group-material">
-                        <input type="number" class="material-control tooltips-general" placeholder="Decuento" required="" maxlength="200" data-toggle="tooltip" data-placement="top" title="Fecha de inicio de Mensualidad" name="discount">
+                        <input type="number" min="1" max="100" class="material-control tooltips-general" placeholder="Decuento" required="" maxlength="200" data-toggle="tooltip" data-placement="top" title="Descuento" name="discount">
                         <span class="highlight"></span>
                         <span class="bar"></span>
                         <label>Descuento de cuota</label>
                     </div>
 
                     <div class="group-material">
-                        <input type="number" class="material-control tooltips-general" placeholder="Descripcion de la Mensualidad" required="" maxlength="70" data-toggle="tooltip" data-placement="top" name="description" title="Escriba el numero de cuota(s)">
+                        <input type="number" min="1" max="10" class="material-control tooltips-general" placeholder="Descripcion de la Mensualidad" required="" maxlength="70" data-toggle="tooltip" data-placement="top" name="description" title="Escriba el numero de cuota(s)">
                         <span class="highlight"></span>
                         <span class="bar"></span>
                         <label>Descripcion</label>
