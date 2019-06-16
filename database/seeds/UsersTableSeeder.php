@@ -19,10 +19,10 @@ class UsersTableSeeder extends Seeder
             'maternal' => 'Miranda',
             'gender' => 'Masculino',
             'address' => 'Calle: Gregorio Garcia Lanza',
-            'ci' => '69860335',
-            'cellphone' => '75273121',
+            'ci' => '65875421',
+            'cellphone' => '78549865',
         	'email' => 'roalmollericona@gmail.com',
-        	'password' => bcrypt(69860335),
+        	'password' => bcrypt(12345678),
         ]);
     }
 }

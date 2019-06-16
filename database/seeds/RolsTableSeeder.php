@@ -28,5 +28,9 @@ class RolsTableSeeder extends Seeder
             'description1' => 'Estudiante',
             'description2' => 'Estudiante'
         ]);
+        Rol::create([
+            'description1' => 'Tutor',
+            'description2' => 'Estudiante'
+        ]);
     }
 }
