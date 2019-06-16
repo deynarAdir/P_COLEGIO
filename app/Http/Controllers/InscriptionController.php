@@ -84,12 +84,13 @@ class InscriptionController extends Controller
         $student->age = $request->age;
 
         $student->save();
+        $fee = FeeType::findOrFail($request->id_fee);
         $type_price = FeeType::first();
         $price = $type_price->price;
-        $price_t = ($price * 10) / $request->id_fee;
+        $price_t = ($price * 10) / $fee->description;
         $student = Student::all()->last();
         $div = 10 / $request->id_fee;
-        for($i = 1; $i <= $request->id_fee; $i++){
+        for($i = 1; $i <= $fee->description; $i++){
             $fecha_inicial = date("Y-m-d",strtotime($fecha_inicial."+ ".$div." month"));
             $fecha_final = date("Y-m-d",strtotime($fecha_inicial."+ 27 days")); 
             $studentFee = new StudentFee;

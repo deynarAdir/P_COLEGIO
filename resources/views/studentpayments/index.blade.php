@@ -42,6 +42,9 @@
                 <a href="{{ url('pagos/detalle',$s->idpayment) }}" class="btn btn-success btn-xs modal-ml">
                     ver
                 </a>
+                <a href="{{ url('pago/pdf',$s->idpayment) }}" class="btn btn-danger btn-xs modal-ml">
+                    pdf
+                </a>
               </div>
               <div class="div-table-cell">
                 <span class="badge bg-blue">{{ $s->state }}</span>

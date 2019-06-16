@@ -37,7 +37,7 @@
             </div>
             <div class="col-md-4 col-sm-12">
               <div class="group-material">
-                  <input type="text" class="material-control tooltips-general" placeholder="Nombre del estudiante" maxlength="30" data-toggle="tooltip" data-placement="top" title="Es un campo autocompletado" value="{{ $p->name }}">
+                  <input type="text" class="material-control tooltips-general" placeholder="Nombre del estudiante" maxlength="30" data-toggle="tooltip" data-placement="top" title="Es un campo autocompletado" value="{{ $p->name }} {{ $p->paternal }} {{ $p->maternal }}">
                   <span class="highlight"></span>
                   <span class="bar"></span>
                   <label>Estudiante:</label>
@@ -123,7 +123,6 @@
           <div class="row">
             <div class="col-md-12">
               <a href="{{ route('pagos.index') }}" class="btn btn-secondary">Cerrar</a>
-              <button class="btn btn-success" id="agregar">Aceptar</button>
             </div>
           </div>
           
