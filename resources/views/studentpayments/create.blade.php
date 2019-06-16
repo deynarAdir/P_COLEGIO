@@ -5,6 +5,7 @@
       <h1 class="all-tittles">Nuevo pago</h1>
     </div>
 </div>
+
 <div class="container-fluid">
     <div class="row">
         <div class="col-xs-12 lead">
