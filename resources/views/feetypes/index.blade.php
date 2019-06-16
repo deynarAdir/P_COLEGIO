@@ -9,13 +9,8 @@
     <div class="row">
         <div class="col-xs-12 lead">
             <ol class="breadcrumb">
-                <li><a href="{{ route('mensualidad.create') }}">Agregar nuevo</a></li>
+                <li><a href="{{ route('cuotas.create') }}">Agregar nuevo</a></li>
                 <li class="active">Listado de Mensualidades</li>
-
-                <span><div class="div-table-cell">
-                 <a href="{{-- {{ route('mensualidad.editpago') }} --}}" class="btn btn-primary"><span>Actualizar Pago</span><i class="zmdi zmdi-refresh"></i></a>
-              </div></span>
-
             </ol>
         </div>
     </div>
@@ -25,21 +20,17 @@
     <div class="div-table">
         <div class="div-table-row div-table-head">
             <div class="div-table-cell">#</div>
-            <div class="div-table-cell">Fecha Inicial</div>
-            <div class="div-table-cell">Fecha Final</div>
-            <div class="div-table-cell">Descripción</div>
-            <div class="div-table-cell">Precio</div>
+            <div class="div-table-cell">Descripcion</div>
+            <div class="div-table-cell">Descuento</div>
             <div class="div-table-cell">Estado</div>
             <div class="div-table-cell">Actualizar</div>
             <div class="div-table-cell">Accion</div>
         </div>  
-        @foreach($monthly as $m)
+        @foreach($fee as $m)
 	        <div class="div-table-row">
-	            <div class="div-table-cell">{{ $m->idmonthly_payment}}</div>
-	            <div class="div-table-cell">{{ $m->start_date }}</div>
-	            <div class="div-table-cell">{{ $m->end_date }}</div>
-	            <div class="div-table-cell">{{ $m->description }}</div>
-              <div class="div-table-cell">{{ $m->price }}</div>
+	            <div class="div-table-cell">{{ $m->idfee_type}}</div>
+	            <div class="div-table-cell">{{ $m->description. " cuota(s)" }}</div>
+	            <div class="div-table-cell">{{ $m->discount }}</div>
                 <div class="div-table-cell">
                     @if($m->state == 1)
                       <div class="text-center text-white">
@@ -52,11 +43,11 @@
                     @endif
                   </div>
 	            <div class="div-table-cell">
-	               <a href="{{ route('mensualidad.edit',$m->idmonthly_payment) }}" class="btn btn-success"><i class="zmdi zmdi-refresh"></i></a>
+	               <a href="{{ route('cuotas.edit',$m->idfee_type) }}" class="btn btn-success"><i class="zmdi zmdi-refresh"></i></a>
 	            </div>
                 <div class="div-table-cell">
                    <button class="btn {{ $m->state?'btn-danger':'btn-success' }} delete-modal"
-                    data-id="{{ $m->idmonthly_payment }}"
+                    data-id="{{ $m->idfee_type }}"
                     data-state="{{ $m->state }}">
                     <i class="zmdi zmdi-refresh"></i></button>
                 </div>
@@ -91,13 +82,13 @@
         var estado = $(this).data('state');
         let action;
         if(estado){
-          action = "{{ url('mensualidad/desactivar') }}/" + $(this).data('id');
+          action = "{{ url('cuotas/desactivar') }}/" + $(this).data('id');
           $('#titulo-modal').text('¿Esta seguro de desactivar este registro?');
           $('#boton-desactivar').val('Desactivar');
           $('#boton-desactivar').attr('class','btn btn-danger');
           console.log('desactivar');
         }else{
-          action = "{{ url('mensualidad/activar') }}/" + $(this).data('id');
+          action = "{{ url('cuotas/activar') }}/" + $(this).data('id');
           $('#titulo-modal').text('¿Esta seguro de activar este registro?');
           console.log('activar');
           $('#boton-desactivar').val('Activar');
