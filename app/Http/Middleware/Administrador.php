@@ -13,8 +13,11 @@ class Administrador
      * @param  \Closure  $next
      * @return mixed
      */
-    public function handle($request, Closure $next)
+    public function handle($request, Closure $next, $rol)
     {
+        if( Auth::user()->id_rol == 2){
+            dd('no tiene acceso');
+        }
         return $next($request);
     }
 }

@@ -40,11 +40,14 @@ Route::group(['middleware'=>['guest']],function(){
 //autenticados en login
 Route::group(['middleware'=>['auth']],function(){
 
-	Route::get('principal', function () {
-    	return view('content.principal');
-	})->name('principal');
+	// Route::group(['middleware'=>['administrador']],function(){
 
-	Route::post('logout', 'Auth\LoginController@logout')->name('logout');
+		Route::get('principal', function () {
+			return view('content.principal');
+		})->name('principal');
+		Route::post('logout', 'Auth\LoginController@logout')->name('logout');
+		
+	// });
 
 });
 
