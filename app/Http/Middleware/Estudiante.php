@@ -4,7 +4,7 @@ namespace App\Http\Middleware;
 
 use Closure;
 
-class Administrador
+class Estudiante
 {
     /**
      * Handle an incoming request.
@@ -15,9 +15,9 @@ class Administrador
      */
     public function handle($request, Closure $next)
     {
-        if( $request->user()->id_rol != 2 ){
-            return redirect('404');
+        if( $request->user()->id_rol == 4 ){
+            return $next($request);
         }
-        return $next($request);
+        return redirect('404');
     }
 }
