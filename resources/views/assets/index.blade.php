@@ -27,10 +27,12 @@
         </div>  
         @foreach($assets as $a)
 	        <div class="div-table-row">
-	            <div class="div-table-cell">{{ $a->idasset}}</div>
+	            <div class="div-table-cell">{{ $loop->iteration }}</div>
 	            <div class="div-table-cell">{{ $a->name }}</div>
 	            <div class="div-table-cell">{{ $a->brand }}</div>
-	            <div class="div-table-cell">{{ $a->image }}</div>
+	            <div class="div-table-cell">
+                <img src="{{ asset('uploads/imagenequipo/'. $a->image) }}" alt="Image" width="200">
+              </div>
               <div class="div-table-cell">{{ $a->description }}</div>
               {{-- <div class="div-table-cell">
                   @if($m->state == 'Registrado')

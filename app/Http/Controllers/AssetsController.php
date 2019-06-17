@@ -41,19 +41,19 @@ class AssetsController extends Controller
         $assets->brand = $request->input('brand');
 
         if ($request->Hasfile('image')){
-            $fiel = $request->file('image');
-            $extension = $file->getAssetsExtension();
-            $filename = time() . '.' . $extension;
-            $file->move('uploads/imagen/',$filename);
-            $caractercancha->image = $filename;
+            $file = $request->file('image');
+            $extension = $file->getClientOriginalExtension();
+            $filename = time(). '.' .$extension;
+            $file->move('uploads/imagenequipo/',$filename);
+            $assets->image = $filename;
         }else {
             return $request;
-            $caractercancha->image = '';
+            $assets->image = '';
         }
 
         $assets->description = $request->input('description');
         $assets -> save();
-        return redirect()->route('assets.index');
+        return redirect()->route('equipamiento.index');
     }
 
     /**
