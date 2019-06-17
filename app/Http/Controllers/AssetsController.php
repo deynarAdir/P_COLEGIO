@@ -37,10 +37,21 @@ class AssetsController extends Controller
     public function store(Request $request)
     {
         $assets = new Assets;
-        $assets->name = $request->name;
-        $assets->brand = $request->brand;
-        $assets->image = $request->image;
-        $assets->description = $request->description;
+        $assets->name = $request->input('name');
+        $assets->brand = $request->input('brand');
+
+        if ($request->Hasfile('image')){
+            $fiel = $request->file('image');
+            $extension = $file->getAssetsExtension();
+            $filename = time() . '.' . $extension;
+            $file->move('uploads/imagen/',$filename);
+            $caractercancha->image = $filename;
+        }else {
+            return $request;
+            $caractercancha->image = '';
+        }
+
+        $assets->description = $request->input('description');
         $assets -> save();
         return redirect()->route('assets.index');
     }

@@ -24,11 +24,13 @@
         
       </div>
       <div class="x_content">
-        <form action="" method="post" enctype="multipart/form-data">
+        <form action="{{ route('equipamiento.store') }}" method="POST" enctype="multipart/form-data">
+
+          {{ csrf_field() }}
           <div class="row border">
             <div class="col-md-4 col-sm-12 col-12">
               <div class="group-material">
-                  <input type="text" class="material-control tooltips-general" placeholder="Introduzca el nombre del equipo" title="Solamente letras y numeros, 10 dígitos" id="name">
+                  <input type="text" class="material-control tooltips-general" placeholder="Introduzca el nombre del equipo" title="Solamente letras y numeros, 10 dígitos" id="name" name="name">
                   <label>Nombre del Equipo</label>
               </div>
               <input type="text" hidden name="id_student" id="id_student">
@@ -45,7 +47,7 @@
             
             <div class="col-md-4 col-sm-12">
                 <div class="group-material">
-                  <input type="file" class="material-control tooltips-general" placeholder="Introduzca una imagen" id="image">
+                  <input type="file" class="custom-file-input" placeholder="Introduzca una imagen" id="image" name="image">
                   <span class="highlight"></span>
                   <span class="bar"></span>
                   <label>Imagen:</label>
@@ -53,7 +55,7 @@
             </div>
             <div class="col-md-4 col-sm-12">
                 <div class="group-material">
-                  <input type="text" class="material-control tooltips-general" placeholder="Introduzca una descripcion del estado" title="Solamente letras y números" id="description">
+                  <input type="text" class="material-control tooltips-general" placeholder="Introduzca una descripcion del estado" title="Solamente letras y números" id="description" name="description">
                   <span class="highlight"></span>
                   <span class="bar"></span>
                   <label>Descripcion:</label>
