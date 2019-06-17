@@ -64,3 +64,10 @@ Route::resource('teacher', 'TeacherController');
 Route::resource('secretary','SecretaryController');
 
 Route::resource('contract', 'ContractController');
+
+Route::get('assistancePersonal/indexOut', 'AdminControlController@indexOut')->name('assistancePersonal.indexOut');
+Route::get('assistancePersonal/registerOut/{id}', 'AdminControlController@createEnd')->name('assistancePersonal.createEnd');
+Route::get('assistancePersonal/registerStart/{id}', 'AdminControlController@createStart')->name('assistancePersonal.createStart');
+Route::resource('assistancePersonal', 'AdminControlController');
+
+Route::resource('salary', 'SalaryController');

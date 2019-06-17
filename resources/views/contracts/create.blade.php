@@ -10,7 +10,7 @@
         <div class="col-xs-12 lead">
             <ol class="breadcrumb">
               <li class="active">Nuevo contrato</li>
-              <li><a href="{{ route('secretary.index') }}">Lista de contratos</a></li>
+              <li><a href="{{ route('contract.index') }}">Lista de contratos</a></li>
           </ol>
       </div>
   </div>
@@ -58,15 +58,12 @@
                             <div class="table-responsive">
                                 <div class="div-table" style="margin:0 !important;">
                                     <div class="div-table-row div-table-row-list">
-                                        <div class="div-table-cell" style="width: 20%;">{{ $us->name }}</div>
+                                        <div class="div-table-cell" style="width: 20%;"><input type="hidden" value="{{ $us->name }} {{ $us->paternal }}" id="nameUser">{{ $us->name }}</div>
                                         <div class="div-table-cell" style="width: 20%;">{{ $us->paternal }} </div>
                                         <div class="div-table-cell" style="width: 20%;">{{ $us->ci}}</div>
                                         <div class="div-table-cell" style="width: 20%;">{{'ROL'}}</div>
                                         <div class="div-table-cell" style="width: 10%;">
-                                            <form method="" action="#">
-                                                @csrf
-                                                <button class="btn btn-success"><i class="zmdi zmdi-plus-circle-o"></i></i></button>
-                                            </form>
+                                            <button class="btn btn-success"><i class="zmdi zmdi-plus-circle-o"></i></i></button>
                                         </div>
                                     </div>
                                 </div>
@@ -90,10 +87,7 @@
                                 <div class="col-md-6">
                                     <div class="group-material">
                                         <span>ID User</span>
-                                        <select disabled class="material-control tooltips-general" data-toggle="tooltip" data-placement="top" title="Elige el genero del docente" name="gender">
-                                            <option value="Masculino">Masculino</option>
-                                            <option value="Femenino">Femenino</option>
-                                        </select>
+                                        <input type="text" disabled="" class="material-control tooltips-general" id="newName">
                                     </div>
                                 </div>
                                 <div class="col-md-6">
@@ -154,9 +148,19 @@
     </div>
 </div>
 
-
 @endsection
 
+
 @section('script')
-    <script src="{{ asset('js/createContract.js') }}"></script>
+<script>
+    $(document).ready(function(){
+        $('#createF').hide();
+        $('.btn-success').click(function(e){
+            e.preventDefault();
+            var t=document.getElementById("nameUser").value;
+            document.getElementById("newName").value="$ "+t
+            $('#createF').show();
+        });
+    });
+</script>
 @endsection

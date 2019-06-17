@@ -52,6 +52,11 @@ class User extends Authenticatable
         return $this->hasMany('App\Contract', 'id_user');
     }
 
+    public function assistances()
+    {
+         return $this->hasMany('App\AdminControl', 'id_user');
+    }
+
     //buscar un usuario por nombre o ci
     public function scopeSearchUser($query, $name){
         if($name)

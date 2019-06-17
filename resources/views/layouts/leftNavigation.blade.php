@@ -7,7 +7,7 @@
         </div>
         <div class="full-reset" style="background-color:#2B3D51; padding: 10px 0; color:#fff;">
             <figure>
-                <img src="assets/assets/img/logo.png" alt="Biblioteca" class="img-responsive center-box" style="width:55%;">
+                <img src="{!!asset('assets/assets/img/logo.png')!!} " alt="Biblioteca" class="img-responsive center-box" style="width:55%;">
             </figure>
             <p class="text-center" style="padding-top: 15px;">Sistema Bibliotecario</p>
         </div>
@@ -17,10 +17,9 @@
                 <li>
                     <div class="dropdown-menu-button"><i class="zmdi zmdi-case zmdi-hc-fw"></i>&nbsp;&nbsp; Administración <i class="zmdi zmdi-chevron-down pull-right zmdi-hc-fw"></i></div>
                     <ul class="list-unstyled">
-                        <li><a href="institution.html"><i class="zmdi zmdi-balance zmdi-hc-fw"></i>&nbsp;&nbsp; Datos institución</a></li>
-                        <li><a href="provider.html"><i class="zmdi zmdi-truck zmdi-hc-fw"></i>&nbsp;&nbsp; Nuevo proveedor</a></li>
-                        <li><a href="category.html"><i class="zmdi zmdi-bookmark-outline zmdi-hc-fw"></i>&nbsp;&nbsp; Nueva categoría</a></li>
                         <li><a href="{{ route('contract.create')}}"><i class="zmdi zmdi-assignment-account zmdi-hc-fw"></i>&nbsp;&nbsp; Nuevo contrato</a></li>
+                        <li><a href="{{ route('assistancePersonal.index')}}"><i class="zmdi zmdi-assignment-account zmdi-hc-fw"></i>&nbsp;&nbsp; Asistencia Personal</a></li>
+                        <li><a href="{{ route('salary.create') }}"><i class="zmdi zmdi-assignment-account zmdi-hc-fw"></i>&nbsp;&nbsp; Salario</a></li>
                     </ul>
                 </li>
                 <li>
