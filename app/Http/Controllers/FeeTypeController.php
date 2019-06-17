@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\FeeType;
 use Illuminate\Http\Request;
+use App\Http\Requests\StoreFeeType;
 
 class FeeTypeController extends Controller
 {
@@ -15,7 +16,7 @@ class FeeTypeController extends Controller
      */
     public function index()
     {
-        $fee = FeeType::orderBy('idfee_types','desc')->paginate(5);
+        $fee = FeeType::orderBy('idfee_type','desc')->paginate(5);
         return view('feetypes.index',['fee'=> $fee]);
     }
 
@@ -35,7 +36,7 @@ class FeeTypeController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreFeeType $request)
     {
         $fee = new FeeType;
         $fee->description=$request->description;
@@ -64,7 +65,7 @@ class FeeTypeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(StoreFeeType $request, $id)
     {
         $fee = FeeType::findOrFail($id);
         $fee->description=$request->description;
