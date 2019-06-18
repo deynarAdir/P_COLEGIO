@@ -9,7 +9,7 @@
             <div class="row">
                 <div class="col-xs-12 lead">
                     <ol class="breadcrumb">
-                      <li class="active">Nuevo </li>
+                      <li class="active">Agregar Nuevo </li>
                       <li><a href="{{ route('secretary.index') }}">Listado</a></li>
                     </ol>
                 </div>

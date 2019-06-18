@@ -2,13 +2,13 @@
 @section('content')
         <div class="container">
             <div class="page-header">
-              <h1 class="all-tittles">Docentes</h1>
+              <h1 class="all-tittles">Tesoreros</h1>
             </div>
         </div>
         <div class="container-fluid">
             <div class="container-flat-form">
-                <div class="title-flat-form title-flat-blue">Actualizar datos del docente</div>
-                <form method="POST" action="{{ route('teacher.update',$user->iduser)}}">
+                <div class="title-flat-form title-flat-blue">Actualizar datos del usuario</div>
+                <form method="POST" action="{{ route('treasurer.update',$user->iduser)}}">
                     @csrf
                     @method('PUT')
                     <div class="row">
@@ -86,7 +86,7 @@
                                 </div>
                             </div>
                             <p class="text-center">
-                                <a class="btn btn-info" style="margin-right: 20px;" href="{{ route('teacher.index')}}"><i class="zmdi zmdi-roller"></i> &nbsp;&nbsp; Volver</a>
+                                <a class="btn btn-info" style="margin-right: 20px;" href="{{ route('treasurer.index')}}"><i class="zmdi zmdi-roller"></i> &nbsp;&nbsp; Volver</a>
                                 <button type="submit" class="btn btn-primary"><i class="zmdi zmdi-floppy"></i> &nbsp;&nbsp; Guardar</button>
                             </p>
                         </div>

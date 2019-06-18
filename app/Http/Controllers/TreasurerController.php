@@ -74,7 +74,7 @@ class TreasurerController extends Controller
     public function edit($id)
     {
         $user = User::FindOrFail($id);
-        return view('treasurers.edit','user');
+        return view('treasurers.edit',compact('user'));
     }
 
     /**
@@ -86,7 +86,17 @@ class TreasurerController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $user = User::findOrFail($id);
+        $user->name = $request->name;
+        $user->paternal = $request->paternal;
+        $user->maternal = $request->maternal;
+        $user->address = $request->address;
+        $user->email = $request->email;
+        $user->ci = $request->ci;
+        $user->cellphone = $request->cellphone;
+        $user->phone = $request->phone;
+        $user->update();
+        return redirect()->route('treasurer.index');
     }
 
     /**

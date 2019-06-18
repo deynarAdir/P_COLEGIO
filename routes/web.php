@@ -85,3 +85,6 @@ Route::get('pagos/detalle/{id}','StudentPaymentController@detallePago');
 Route::resource('secretary','SecretaryController');
 
 Route::resource('treasurer','TreasurerController');
+
+Route::get('schedulePersonal/create/{id}','SchedulesController@create')->name('schedulesPersonal.create');
+Route::resource('schedulesPersonal','SchedulesController', ['except' => ['create']]);
