@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Teacher;
 use App\User;
+use App\Contract;
+use App\TypeContract;
 use App\Http\Requests;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
@@ -19,10 +21,11 @@ class TeacherController extends Controller
      */
     public function index()
     {
-        $users = DB::table('users')->where('id_rol','=',2)->where('estate','=',1)->get();
-        return view('teachers.index',[
-            'users' => $users
-        ]);
+        $user = User::join('teachers','users.iduser','=','teachers.id_user')
+            ->select('users.iduser','users.name', 'users.paternal','users.maternal', 'users.ci', 'users.cellphone',
+                'teachers.idteacher', 'teachers.specialty')
+            ->where('id_rol','=',3)->where('estate','=',1)->orderBy('iduser','desc')->get();
+        return view('teachers.index',compact('user'));
     }
 
     /**
@@ -32,7 +35,8 @@ class TeacherController extends Controller
      */
     public function create()
     {
-        return view('teachers.create');
+        $typeContract = TypeContract::all();
+        return view('teachers.create', compact('typeContract'));
     }
 
     /**
@@ -44,7 +48,7 @@ class TeacherController extends Controller
     public function store(Request $request)
     {
         $user = new User();
-        $user->id_rol = 2;
+        $user->id_rol = 3;
         $user->name = $request->name;
         $user->paternal = $request->paternal;
         $user->maternal = $request->maternal;
@@ -52,16 +56,15 @@ class TeacherController extends Controller
         $user->address = $request->address;
         $user->email = $request->email;
         //falta encriptar
-        $user->password = $request->password;
+        $user->password = bcrypt($request->password);
         $user->ci = $request->ci;
         $user->cellphone = $request->cellphone;
         $user->phone = $request->phone;
         $user->save();
 
         $teacher = new Teacher();
-        $user_id = User::where("ci","=",$user->ci)->first();
 
-        $teacher->id_user = $user_id->iduser;
+        $teacher->id_user = $user->iduser;
         $teacher->specialty = $request->speciality;
         $teacher->num_item = $request->numberItem;
         if(Input::hasFile('cv')){
@@ -69,8 +72,15 @@ class TeacherController extends Controller
             $file->move(public_path().'\documents\teachers',$file->getClientOriginalName());
             $teacher->cv=$file->getClientOriginalName();
         }
-        $teacher->teachercol = $request->teacherSchool;
         $teacher->save();
+
+        $contract = new Contract();
+        $contract->id_user = $user->iduser;
+        $contract->id_type_contract = $request->typeContract;
+        $contract->start_date = $request->dateStart;
+        $contract->end_date = $request->dateEnd;
+        $contract->payment = $request->payment;
+        $contract->save();
 
         return redirect()->route('teacher.index');
     }
@@ -92,14 +102,11 @@ class TeacherController extends Controller
      * @param  \App\Teacher  $teacher
      * @return \Illuminate\Http\Response
      */
-    public function edit( $id)
+    public function edit($id)
     {
         $user = User::findOrFail($id);
-        $teacher = DB::table('teachers')->where('id_user','=',$id)->first();
-        return view('teachers.edit',[
-            'user' => $user,
-            'teacher' => $teacher
-        ]);
+        $teacher = Teacher::where('id_user','=',$id)->first();
+        return view('teachers.edit',compact('user','teacher'));
     }
 
     /**
@@ -117,14 +124,14 @@ class TeacherController extends Controller
         $user->maternal = $request->maternal;
         $user->address = $request->address;
         $user->email = $request->email;
+        $user->ci = $request->ci;
         $user->cellphone = $request->cellphone;
         $user->phone = $request->phone;
         $user->update();
 
         $teacher = Teacher::where('id_user','=',$id)->first();
-        //$teacher = DB::table('teachers')->where('id_user','=',$id)->first(); ///////////////esto no genera un modelo eloquen por lo que no nos deja actualizar
         $teacher->specialty = $request->speciality;
-        $teacher->teachercol = $request->teacherSchool;
+        $teacher->num_item = $request->numberItem;
         $teacher->save();
         return redirect()->route('teacher.index');
     }

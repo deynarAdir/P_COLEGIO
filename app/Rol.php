@@ -6,5 +6,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class Rol extends Model
 {
-    protected $primaryKey = 'idrol';
+
+    public function user(){
+
+        return $this->hasMany(User::class,'id_rol','idrol');
+
+    }
+
 }

@@ -7,9 +7,9 @@
         </div>
         <div class="full-reset" style="background-color:#2B3D51; padding: 10px 0; color:#fff;">
             <figure>
-                <img src="assets/assets/img/logo.png" alt="Biblioteca" class="img-responsive center-box" style="width:55%;">
+                <img src="{!! asset('assets/assets/img/logo.png') !!}" alt="Biblioteca" class="img-responsive center-box" style="width:55%;">
             </figure>
-            <p class="text-center" style="padding-top: 15px;">Sistema Bibliotecario</p>
+            <p class="text-center" style="padding-top: 15px;">COLEGIO</p>
         </div>
         <div class="full-reset nav-lateral-list-menu">
             <ul class="list-unstyled">
@@ -17,18 +17,22 @@
                 <li>
                     <div class="dropdown-menu-button"><i class="zmdi zmdi-case zmdi-hc-fw"></i>&nbsp;&nbsp; Administración <i class="zmdi zmdi-chevron-down pull-right zmdi-hc-fw"></i></div>
                     <ul class="list-unstyled">
+                        <li><a href="{{ route('inscriptions.index') }}"><i class="zmdi zmdi-bookmark-outline zmdi-hc-fw"></i>&nbsp;&nbsp; Nueva Inscripción</a></li>
+                        <li><a href="{{ route('parallels.index') }}"><i class="zmdi zmdi-balance zmdi-hc-fw"></i>&nbsp;&nbsp; Paralelos</a></li>
+                        <li><a href="{{ route('degrees.index') }}"><i class="zmdi zmdi-balance zmdi-hc-fw"></i>&nbsp;&nbsp; Cursos</a></li>
+                        <li><a href="{{ route('students.index') }}"><i class="zmdi zmdi-balance zmdi-hc-fw"></i>&nbsp;&nbsp; Estudiantes</a></li>
                         <li><a href="institution.html"><i class="zmdi zmdi-balance zmdi-hc-fw"></i>&nbsp;&nbsp; Datos institución</a></li>
                         <li><a href="provider.html"><i class="zmdi zmdi-truck zmdi-hc-fw"></i>&nbsp;&nbsp; Nuevo proveedor</a></li>
-                        <li><a href="category.html"><i class="zmdi zmdi-bookmark-outline zmdi-hc-fw"></i>&nbsp;&nbsp; Nueva categoría</a></li>
+
                         <li><a href="section.html"><i class="zmdi zmdi-assignment-account zmdi-hc-fw"></i>&nbsp;&nbsp; Nueva sección</a></li>
                     </ul>
                 </li>
                 <li>
                     <div class="dropdown-menu-button"><i class="zmdi zmdi-account-add zmdi-hc-fw"></i>&nbsp;&nbsp; Registro de usuarios <i class="zmdi zmdi-chevron-down pull-right zmdi-hc-fw"></i></div>
                     <ul class="list-unstyled">
-                        <li><a href="admin.html"><i class="zmdi zmdi-face zmdi-hc-fw"></i>&nbsp;&nbsp; Nuevo administrador</a></li>
-                        <li><a href="{{ route('teacher.index') }}"><i class="zmdi zmdi-male-alt zmdi-hc-fw"></i>&nbsp;&nbsp; Nuevo docente</a></li>
-                        <li><a href="student.html"><i class="zmdi zmdi-accounts zmdi-hc-fw"></i>&nbsp;&nbsp; Nuevo estudiante</a></li>
+                        <li><a href="{{ route('secretary.create')}}"><i class="zmdi zmdi-face zmdi-hc-fw"></i>&nbsp;&nbsp; Nuev@ secretari@</a></li>
+                        <li><a href="{{ route('teacher.create') }}"><i class="zmdi zmdi-male-alt zmdi-hc-fw"></i>&nbsp;&nbsp; Nuevo docente</a></li>
+                        <li><a href="{{ route('treasurer.create') }}"><i class="zmdi zmdi-accounts zmdi-hc-fw"></i>&nbsp;&nbsp; Nuevo tesorero</a></li>
                         <li><a href="personal.html"><i class="zmdi zmdi-male-female zmdi-hc-fw"></i>&nbsp;&nbsp; Nuevo personal administrativo</a></li>
                     </ul>
                 </li>
@@ -42,12 +46,8 @@
                 <li>
                     <div class="dropdown-menu-button"><i class="zmdi zmdi-alarm zmdi-hc-fw"></i>&nbsp;&nbsp; Finanzas <i class="zmdi zmdi-chevron-down pull-right zmdi-hc-fw"></i></div>
                     <ul class="list-unstyled">
-                        <li><a href="{{ route('pensiones.index') }}"><i class="zmdi zmdi-calendar zmdi-hc-fw"></i>&nbsp;&nbsp; Pensiones</a></li>
-                        <li><a href="{{ route('monthly.index') }}"><i class="zmdi zmdi-money zmdi-hc-fw"></i>&nbsp;&nbsp; Mensualidades</a></li>
-                        <li>
-
-                            <a href="loanpending.html"><i class="zmdi zmdi-time-restore zmdi-hc-fw"></i>&nbsp;&nbsp; Devoluciones pendientes <span class="label label-danger pull-right label-mhover">7</span></a>
-                        </li>
+                        <li><a href="{{ route('cuotas.index') }}"><i class="zmdi zmdi-money zmdi-hc-fw"></i>&nbsp;&nbsp; Cuotas</a></li>
+                        <li><a href="{{ route('pagos.index') }}"><i class="zmdi zmdi-calendar zmdi-hc-fw"></i>&nbsp;&nbsp; Pagos</a></li>
                         <li>
                             <a href="loanreservation.html"><i class="zmdi zmdi-timer zmdi-hc-fw"></i>&nbsp;&nbsp; Reservaciones <span class="label label-danger pull-right label-mhover">7</span></a>
                         </li>

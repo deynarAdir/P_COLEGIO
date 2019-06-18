@@ -1,7 +1,7 @@
 <nav class="navbar-user-top full-reset">
     <ul class="list-unstyled full-reset">
         <figure>
-           <img src="assets/assets/img/user01.png" alt="user-picture" class="img-responsive img-circle center-box">
+           <img src="{!! asset('assets/assets/img/user01.png') !!}" alt="user-picture" class="img-responsive img-circle center-box">
         </figure>
         <li style="color:#fff; cursor:default;">
             <span class="all-tittles">{{ Auth::user()->name}}</span>

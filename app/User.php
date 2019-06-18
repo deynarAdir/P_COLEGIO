@@ -2,6 +2,7 @@
 
 namespace App;
 
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -18,7 +19,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password', 'total_intento', 'intentos' ,'fecha_bloqueo'
+        'name','paternal','maternal', 'ci','gender', 'email', 'password', 'total_intento', 'intentos' ,'fecha_bloqueo'
     ];
 
     /**
@@ -42,4 +43,17 @@ class User extends Authenticatable
     public function teachers(){
         return $this->hasMany('App\Teacher','id_user');
     }
+    public function rol(){
+        return $this->belongsTo(Rol::class,'id_rol','idrol');
+    }
+
+    public function manager(){
+        return $this->hasMany(Manager::class,'id_user','iduser');
+    }
+
+    public function student(){
+        return $this->hasMany(Student::class,'id_user','iduser');
+    }
+
+
 }

@@ -19,8 +19,8 @@ class CreateContractsTable extends Migration
             $table->integer('id_type_contract')->unsigned();
             $table->date('start_date');
             $table->date('end_date');
-            $table->decimal('payment',5,2);
-            $table->decimal('total_hours',4,2);
+            $table->double('payment');
+            //$table->decimal('total_hours',4,2);
             $table->timestamps();
 
             $table->foreign('id_user')->references('iduser')->on('users');
