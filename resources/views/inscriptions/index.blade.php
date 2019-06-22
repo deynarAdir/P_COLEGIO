@@ -49,7 +49,7 @@
                                 <select name="id_fee" class="material-control tooltips-general" data-toggle="tooltip" data-placement="top" title="Elige la sección encargada del docente" id="tipo_pago">
                                     <option value="" disabled="" selected="">Selecciona un tipo de pago</option>
                                         @foreach ($types as $t)
-                                            <option value="{{$t->idfee_type}}" >{{$t->description}}</option>
+                                            <option value="{{$t->idfee_type}}" >{{$t->description ." con"}} {{ $t->discount ." % de descuento" }}</option>
                                         @endforeach
 
                                 </select>

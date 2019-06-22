@@ -40,7 +40,7 @@ class ManagerController extends Controller
     {
         $rol = new Rol;
         $user =new User;
-        $user->id_rol =5;
+        $user->id_rol ='5';
         $user->name=$request->name;
         $user->paternal=$request->paternal;
         $user->paternal=$request->maternal;

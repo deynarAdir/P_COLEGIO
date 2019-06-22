@@ -4,12 +4,19 @@ namespace App\Http\Controllers;
 
 use App\FeeType;
 use Illuminate\Http\Request;
+use App\Http\Requests\StoreFeeType;
 
 class FeeTypeController extends Controller
 {
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function index()
     {
-        $fee = FeeType::orderBy('idfee_type','desc')->paginate(10);
+        $fee = FeeType::orderBy('idfee_type','desc')->paginate(5);
         return view('feetypes.index',['fee'=> $fee]);
     }
 
@@ -29,7 +36,7 @@ class FeeTypeController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreFeeType $request)
     {
         $fee = new FeeType;
         $fee->description=$request->description;
@@ -48,6 +55,7 @@ class FeeTypeController extends Controller
     {
         $fee = FeeType::findOrFail($id);
         return view('feetypes.edit',['fee'=> $fee]);
+
     }
 
     /**
@@ -59,8 +67,13 @@ class FeeTypeController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $this->validate($request, [
+            'description' => 'required|numeric|digits_between:1,10',
+            'discount' => 'required|numeric|digits_between:1,50'
+        ]);
         $fee = FeeType::findOrFail($id);
         $fee->description=$request->description;
+        $fee->discount=$request->discount;
         $fee->discount=$request->discount;
         $fee->save();
         return redirect()->route('cuotas.index');

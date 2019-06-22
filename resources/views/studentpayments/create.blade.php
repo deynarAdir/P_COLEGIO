@@ -76,10 +76,7 @@
             </div>
             <div class="col-md-4 col-sm-12">
                 <div class="group-material">
-                  <input type="text" class="material-control tooltips-general" placeholder="Mensualidad" data-toggle="tooltip" data-placement="top" title="Es un campo autocompletado" id="description-1">
-                  <span class="highlight"></span>
-                  <span class="bar"></span>
-                  <label>Nombre de mensualidad:</label>
+                  <label>Ver mensualidades:</label>
                </div>
             </div>
             <div class="form-group col-md-2">
@@ -209,7 +206,7 @@
         for (var i = 0;i<data.feeStudent.data.length;i++) {
             juntar+=`<tr>
               <td> ${data.feeStudent.data[i].idstudent_fee} </td>
-              <td> ${data.feeStudent.data[i].description} </td>
+              <td> ${data.feeStudent.data[i].description} cuota(s) </td>
               <td> ${data.feeStudent.data[i].start_date} </td>
               <td> ${data.feeStudent.data[i].end_date} </td>
               <td> ${data.feeStudent.data[i].price} </td>

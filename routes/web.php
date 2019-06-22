@@ -37,25 +37,58 @@ Route::group(['middleware'=>['guest']],function(){
 	Route::post('login', 'Auth\LoginController@login')->name('login1');
 
 });
-//autenticados en login
+//**********************************************************************************************
+//ANTES DE INGRESAR AL SISTEMA PASA POR UN FORMULARIO DE IDENTIFICACION "LOGIN"
 Route::group(['middleware'=>['auth']],function(){
 
-	Route::get('principal', function () {
-    	return view('content.principal');
-	})->name('principal');
+		Route::get('principal', function () {
+			return view('content.principal');
+		})->name('principal');
+		Route::post('logout', 'Auth\LoginController@logout')->name('logout');
+//----------------------------------------------------------------------------------------------
+		Route::group(['middleware'=>'tesorero'],function(){
+			//Acceso a finanzas
+			Route::resource('pensiones','PensionController');
 
-	Route::post('logout', 'Auth\LoginController@logout')->name('logout');
+			Route::resource('cuotas','FeeTypeController', ['except' => ['show']]);
+			Route::put('cuotas/activar/{id}','FeeTypeController@active');
+			Route::put('cuotas/desactivar/{id}','FeeTypeController@desactive');
+			Route::resource('pagos','StudentPaymentController');
+			Route::get('obtener/mensualidades/{id}', 'StudentPaymentController@getMonthly');
+			Route::get('obtener/estudiante/{ci}','StudentPaymentController@getStudent');
+			Route::get('mensualidad/buscar','StudentPaymentController@search');
+
+			Route::get('pago/pdf/{id}','StudentPaymentController@pdf');
+			Route::get('pagos/detalle/{id}','StudentPaymentController@detallePago');
+		});
+//----------------------------------------------------------------------------------------------
+		Route::group(['middleware'=>'director'],function(){
+			//Accesos del director para las notas horarios entre otros...
+		});
+//----------------------------------------------------------------------------------------------
+		Route::group(['middleware'=>'docente'],function(){
+			//Accesos del docente Notas,Horario etc..
+		});
+//----------------------------------------------------------------------------------------------
+		Route::group(['middleware'=>'estudiante'],function(){
+			//Acceso del estudiante para ver notas...
+		});
+//----------------------------------------------------------------------------------------------
+		Route::group(['middleware'=>'tutor'],function(){
+			//Acceso del tutor para verificar estado del estudiante...
+		});
 
 });
+//**********************************************************************************************
 
-
+Route::get('404', function () { return view('error'); });
 
 
 Route::get('email/resend', 'Auth\VerificationController@resend')->name('verification.resend');
 
+//**********************************************************************************************
 // porque
 
-Route::resource('pensiones','PensionController');
 
 Route::resource('monthly','MonthlyPaymentController');
 
@@ -69,13 +102,3 @@ Route::resource('inscriptions','InscriptionController');
 
 Route::resource('students','StudentController');
 
-Route::resource('cuotas','FeeTypeController', ['except' => ['show']]);
-Route::put('cuotas/activar/{id}','FeeTypeController@active');
-Route::put('cuotas/desactivar/{id}','FeeTypeController@desactive');
-Route::resource('pagos','StudentPaymentController');
-Route::get('obtener/mensualidades/{id}', 'StudentPaymentController@getMonthly');
-Route::get('obtener/estudiante/{ci}','StudentPaymentController@getStudent');
-Route::get('mensualidad/buscar','StudentPaymentController@search');
-
-Route::get('pago/pdf/{id}','StudentPaymentController@pdf');
-Route::get('pagos/detalle/{id}','StudentPaymentController@detallePago');
