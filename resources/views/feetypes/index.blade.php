@@ -30,7 +30,7 @@
 	        <div class="div-table-row">
 	            <div class="div-table-cell">{{ $m->idfee_type}}</div>
 	            <div class="div-table-cell">{{ $m->description. " cuota(s)" }}</div>
-	            <div class="div-table-cell">{{ $m->discount }}</div>
+	            <div class="div-table-cell">{{ $m->discount . "%"}}</div>
                 <div class="div-table-cell">
                     @if($m->state == 1)
                       <div class="text-center text-white">

@@ -13,7 +13,7 @@ class RolsTableSeeder extends Seeder
     public function run()
     {
         Rol::create([
-        	'description1' => 'Administrador',
+        	'description1' => 'Tesorero',
         	'description2' => 'Gerente'
         ]);
         Rol::create([
@@ -28,15 +28,9 @@ class RolsTableSeeder extends Seeder
             'description1' => 'Estudiante',
             'description2' => 'Estudiante'
         ]);
-
         Rol::create([
-        	'description1' => 'TUTOR',
-        	'description2' => 'PADRE',
-        ]);
-
-        Rol::create([
-        	'description1' => 'ESTUDIANTE',
-        	'description2' => 'WHAT?',
+            'description1' => 'Tutor',
+            'description2' => 'Apoderado'
         ]);
     }
 }

@@ -26,7 +26,7 @@ class InscriptionController extends Controller
         $degrees=Degree::all();
         $types=FeeType::all();
         $parallels=Parallel::all();
-        $users=User::with(['manager','rol'])->where('id_rol','2')->get();
+        $users=User::with(['manager','rol'])->where('id_rol','5')->get();
         return view('inscriptions.index',[
             'degrees' => $degrees,
             'parallels' => $parallels,
@@ -95,6 +95,7 @@ class InscriptionController extends Controller
             $fecha_final = date("Y-m-d",strtotime($fecha_inicial."+ 27 days")); 
             $studentFee = new StudentFee;
             $studentFee->id_student = $student->idstudent;
+            $studentFee->id_fee_types = $request->id_fee;
             $studentFee->description = 'pagos si o si';
             $studentFee->price = $price_t;
             $studentFee->start_date = $fecha_inicial;
