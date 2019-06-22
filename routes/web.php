@@ -102,3 +102,7 @@ Route::resource('inscriptions','InscriptionController');
 
 Route::resource('students','StudentController');
 
+Route::get('configurar/tiempos','PunishmentController@index')->name('configuration.index');
+Route::get('configurar/tiempo/{id}/{time}','PunishmentController@edit')->name('configuration.edit');
+Route::put('configurar/tiempo/{id}/{time}','PunishmentController@update')->name('configuration.update');
+

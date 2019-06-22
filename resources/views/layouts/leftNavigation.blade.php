@@ -58,6 +58,9 @@
                         </li>
                     </ul>
                 </li>
+                <ul class="list-unstyled">
+                        <li><a href="{{ route('configuration.index') }}"><i class="zmdi zmdi-money zmdi-hc-fw"></i>&nbsp;&nbsp; Configuracion de tiempos</a></li>
+                    </ul>
                 <li><a href="report.html"><i class="zmdi zmdi-trending-up zmdi-hc-fw"></i>&nbsp;&nbsp; Reportes y estadísticas</a></li>
                 <li><a href="advancesettings.html"><i class="zmdi zmdi-wrench zmdi-hc-fw"></i>&nbsp;&nbsp; Configuraciones avanzadas</a></li>
             </ul>
