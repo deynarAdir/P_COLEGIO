@@ -52,6 +52,11 @@
                 </span>
             </div>
             <button class="btn-login" type="button" id="ingresar">Ingresar al sistema &nbsp; <i class="zmdi zmdi-arrow-right"></i></button>
+            @if (Route::has('password.request'))
+                <a class="text-white" href="{{ route('password.request') }}">
+                    ¿Olvidaste tu contraseña?
+                </a>
+            @endif
         </form>
         <span id="resultado"></span>
     </div>
