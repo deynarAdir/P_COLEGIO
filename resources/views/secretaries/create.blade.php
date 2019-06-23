@@ -126,7 +126,7 @@
                                     </div>
                                     <div class="col-md-4">
                                         <div class="group-material">
-                                            <input type="text" class="material-control tooltips-general" placeholder="Escribe aquí el nombre de itulo de la secretaria" pattern="[a-zA-Z]{1,30}" required maxlength="30" data-toggle="tooltip" data-placement="top" title="Titulo universitario" name="title">
+                                            <input type="text" class="material-control tooltips-general" placeholder="Escribe aquí el nombre de titulo de la secretaria" pattern="[a-zA-Z]{1,30}" required="" maxlength="30" data-toggle="tooltip" data-placement="top" title="Titulo universitario" name="title">
                                             <span class="highlight"></span>
                                             <span class="bar"></span>
                                             <label>Titulo academico</label>

@@ -1,4 +1,4 @@
-<!-- 
+<!--
 * Copyright 2016 Carlos Eduardo Alfaro Orellana
 -->
 <!DOCTYPE html>
@@ -24,19 +24,20 @@
     <script src="{!! asset('assets/js/bootstrap.min.js') !!}"></script>
     <script src="{!! asset('assets/js/jquery.mCustomScrollbar.concat.min.js') !!}"></script>
     <script src="{!! asset('assets/js/main.js') !!}"></script>
-    
-    
+
+
 </head>
 <body>
     @include('layouts.leftNavigation')
     <div class="content-page-container full-reset custom-scroll-containers">
         @include('layouts.topNavigation')
-            
+
         @yield('content')
 
         @include('layouts.footer')
     </div>
     @section('scripts')
     @show
+    @yield('script')
 </body>
 </html>

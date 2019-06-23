@@ -88,3 +88,10 @@ Route::resource('treasurer','TreasurerController');
 
 Route::get('schedulePersonal/create/{id}','SchedulesController@create')->name('schedulesPersonal.create');
 Route::resource('schedulesPersonal','SchedulesController', ['except' => ['create']]);
+
+Route::get('assistancePersonal/createExit','AdminControlController@createEx')->name('assistancePersonal.createOut');
+
+Route::post('assistancePersonal/createExit','AdminControlController@storeExit')->name('assistancePersonal.storeOut');
+
+Route::resource('assistancePersonal','AdminControlController');
+

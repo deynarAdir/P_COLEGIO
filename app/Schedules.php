@@ -6,5 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Schedules extends Model
 {
-    //
+    protected $table = 'horarios';
+
+    protected $primaryKey = 'idhorario';
 }

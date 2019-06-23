@@ -12,7 +12,7 @@
     </ul>
 </div>
 <div class="container-fluid">
-    <h2 class="text-center all-tittles" style="clear: both; margin: 25px 0;">Listado de secretarias</h2>
+    <h2 class="text-center all-tittles" style="clear: both; margin: 25px 0;">Listado del personal</h2>
     <div class="table-responsive">
         <div class="div-table" style="margin:0 !important;">
             <div class="div-table-row div-table-row-list" style="background-color:#DFF0D8; font-weight:bold;">
@@ -23,6 +23,7 @@
                 <div class="div-table-cell" style="width: 12%;">Direccion</div>
                 <div class="div-table-cell" style="width: 15%;">Rol de usuario</div>
                 <div class="div-table-cell" style="width: 9%;">Asignar horario</div>
+                <div class="div-table-cell" style="width: 9%;">Ver horario</div>
             </div>
         </div>
         @foreach($user as $us)
@@ -36,12 +37,15 @@
                     <div class="div-table-cell" style="width: 12%;">{{ $us->address}}</div>
                     <div class="div-table-cell" style="width: 15%;">{{ $us->description1}}</div>
                     <div class="div-table-cell" style="width: 9%;">
-                      <a class="btn btn-success" href="{{ route('schedulesPersonal.create', $us->iduser)}}"><i class="zmdi zmdi-settings zmdi-hc-spin"></i></a>
-                  </div>
-              </div>
-          </div>
-      </div>
-      @endforeach
-  </div>
+                        <a class="btn btn-success" href="{{ route('schedulesPersonal.create', $us->iduser)}}"><i class="zmdi zmdi-settings zmdi-hc-spin"></i></a>
+                    </div>
+                    <div class="div-table-cell" style="width: 9%;">
+                        <a class="btn btn-success" href="{{ route('schedulesPersonal.show', $us->iduser)}}"><i class="zmdi zmdi-eye"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        @endforeach
+    </div>
 </div>
 @endsection
