@@ -88,7 +88,27 @@ class AssetsController extends Controller
      */
     public function update(Request $request, Assets $assets)
     {
-        //
+        $assets = Assets::find($id);
+
+
+        $assets->name = $request->input('name');
+        $assets->brand = $request->input('brand');
+
+        if ($request->Hasfile('image')){
+            $file = $request->file('image');
+            $extension = $file->getClientOriginalExtension();
+            $filename = time(). '.' .$extension;
+            $file->move('uploads/imagenequipo/',$filename);
+            $assets->image = $filename;
+        }else {
+            return $request;
+            $assets->image = '';
+        }
+
+        $assets->description = $request->input('description');
+        
+        $assets -> save();
+        return redirect()->route('equipamiento.index');
     }
 
     /**
