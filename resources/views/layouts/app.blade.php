@@ -38,5 +38,6 @@
     </div>
     @section('scripts')
     @show
+@stack('script')
 </body>
 </html>

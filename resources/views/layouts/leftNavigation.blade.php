@@ -26,6 +26,8 @@
                         <li><a href="{{ route('degrees.index') }}"><i class="zmdi zmdi-balance zmdi-hc-fw"></i>&nbsp;&nbsp; Cursos</a></li>
                         <li><a href="{{ route('students.index') }}"><i class="zmdi zmdi-balance zmdi-hc-fw"></i>&nbsp;&nbsp; Estudiantes</a></li>
                         <li><a href="institution.html"><i class="zmdi zmdi-balance zmdi-hc-fw"></i>&nbsp;&nbsp; Datos institución</a></li>
+                        <li><a href="{{ route('subjectteacherdetail.index') }}"><i class="zmdi zmdi-assignment-o zmdi-hc-fw"></i>&nbsp;&nbsp; Asignar Materias</a></li>
+                        <li><a href="{{ route('subjects.index') }}"><i class="zmdi zmdi-bookmark-outline zmdi-hc-fw"></i>&nbsp;&nbsp; Materias</a></li>
                         <li><a href="provider.html"><i class="zmdi zmdi-truck zmdi-hc-fw"></i>&nbsp;&nbsp; Nuevo proveedor</a></li>
 
                         <li><a href="section.html"><i class="zmdi zmdi-assignment-account zmdi-hc-fw"></i>&nbsp;&nbsp; Nueva sección</a></li>
@@ -38,6 +40,14 @@
                         <li><a href="teacher.html"><i class="zmdi zmdi-male-alt zmdi-hc-fw"></i>&nbsp;&nbsp; Nuevo docente</a></li>
                         <li><a href="student.html"><i class="zmdi zmdi-accounts zmdi-hc-fw"></i>&nbsp;&nbsp; Nuevo estudiante</a></li>
                         <li><a href="personal.html"><i class="zmdi zmdi-male-female zmdi-hc-fw"></i>&nbsp;&nbsp; Nuevo personal administrativo</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <div class="dropdown-menu-button"><i class="zmdi zmdi-male-alt zmdi-hc-fw"></i>&nbsp;&nbsp; Docentes<i class="zmdi zmdi-chevron-down pull-right zmdi-hc-fw"></i></div>
+                    <ul class="list-unstyled">
+                        <li><a href="{{ route('notes.index') }}"><i class="zmdi zmdi-male-alt zmdi-hc-fw"></i>&nbsp;&nbsp; Nuevo docente</a></li>
+
+                        
                     </ul>
                 </li>
                 <li>

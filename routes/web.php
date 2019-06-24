@@ -106,3 +106,8 @@ Route::get('configurar/tiempos','PunishmentController@index')->name('configurati
 Route::get('configurar/tiempo/{id}/{time}','PunishmentController@edit')->name('configuration.edit');
 Route::put('configurar/tiempo/{id}/{time}','PunishmentController@update')->name('configuration.update');
 
+Route::resource('notes','NotesController');
+
+Route::resource('subjectteacherdetail','SubjectTeacherDetailController');
+
+Route::resource('subjects','SubjectController');

@@ -19,7 +19,6 @@ class CreateTeachersTable extends Migration
             $table->string('specialty',45);
             $table->string('num_item',45);
             $table->string('cv',45);
-            $table->string('teachercol',45);
             $table->timestamps();
 
             $table->foreign('id_user')->references('iduser')->on('users');
