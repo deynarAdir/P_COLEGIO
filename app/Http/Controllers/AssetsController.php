@@ -73,9 +73,10 @@ class AssetsController extends Controller
      * @param  \App\Assets  $assets
      * @return \Illuminate\Http\Response
      */
-    public function edit(Assets $assets)
+    public function edit($id)
     {
-        //
+        $assets = Assets::find($id);
+        return view('assets.edit',['assets' => $assets]);
     }
 
     /**

@@ -24,6 +24,8 @@
             <div class="div-table-cell">Marca</div>
             <div class="div-table-cell">Imagen</div>
             <div class="div-table-cell">Descripcion</div>
+            <div class="div-table-cell">Acciones</div>
+
         </div>  
         @foreach($assets as $a)
 	        <div class="div-table-row">
@@ -34,6 +36,9 @@
                 <img src="{{ asset('uploads/imagenequipo/'. $a->image) }}" alt="Image" width="200">
               </div>
               <div class="div-table-cell">{{ $a->description }}</div>
+              <div class="div-table-cell">
+                <a href="{{ route('equipamiento.edit',$a->id) }}" class="buttonPrevious buttonDisabled btn btn-primary"><i class="glyphicon glyphicon-refresh"></i></a>
+              </div>
               {{-- <div class="div-table-cell">
                   @if($m->state == 'Registrado')
                     <div class="text-center text-white">
