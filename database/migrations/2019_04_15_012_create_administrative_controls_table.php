@@ -19,9 +19,11 @@ class CreateAdministrativeControlsTable extends Migration
             $table->date('date');
             $table->time('start_time');
             $table->time('end_time');
-            $table->decimal('extra',4,2)->nullable();
+            $table->integer('extra')->nullable();
+            $table->integer('status')->default(0);
+            $table->time('delay');
             $table->timestamps();
-            
+
             $table->foreign('id_user')->references('iduser')->on('users');
         });
     }

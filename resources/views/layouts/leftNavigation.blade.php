@@ -48,9 +48,7 @@
                     <ul class="list-unstyled">
                         <li><a href="{{ route('cuotas.index') }}"><i class="zmdi zmdi-money zmdi-hc-fw"></i>&nbsp;&nbsp; Cuotas</a></li>
                         <li><a href="{{ route('pagos.index') }}"><i class="zmdi zmdi-calendar zmdi-hc-fw"></i>&nbsp;&nbsp; Pagos</a></li>
-                        <li>
-                            <a href="loanreservation.html"><i class="zmdi zmdi-timer zmdi-hc-fw"></i>&nbsp;&nbsp; Reservaciones <span class="label label-danger pull-right label-mhover">7</span></a>
-                        </li>
+                        <li><a href="{{ route('salary.index') }}"><i class="zmdi zmdi-calendar zmdi-hc-fw"></i>&nbsp;&nbsp; Pagos Personal</a></li>
                     </ul>
                 </li>
                 <li><a href="report.html"><i class="zmdi zmdi-trending-up zmdi-hc-fw"></i>&nbsp;&nbsp; Reportes y estadísticas</a></li>

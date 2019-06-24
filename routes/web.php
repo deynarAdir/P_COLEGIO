@@ -95,3 +95,12 @@ Route::post('assistancePersonal/createExit','AdminControlController@storeExit')-
 
 Route::resource('assistancePersonal','AdminControlController');
 
+Route::resource('salary', 'SalaryController');
+
+Route::get('get/personal/{ci}','SalaryController@getPersonal');
+
+Route::get('get/discount/{ci}','SalaryController@getDiscount');
+
+Route::get('get/bonus/{ci}','SalaryController@getBonus');
+Route::get('get/salary/{ci}','SalaryController@getSalary');
+

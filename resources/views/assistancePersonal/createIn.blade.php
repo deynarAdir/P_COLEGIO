@@ -27,7 +27,7 @@
                 <div class="row">
                     <div class="col-md-6 col-md-offset-3"><br><br>
                         <div class="group-material">
-                            <input type="text" class="material-control tooltips-general" placeholder="Ej: 6549875" pattern="[0-9 ]{1,50}" required="" maxlength="10" data-toggle="tooltip" data-placement="top" title="Ingrese su numero de carnet de identidad" name="ci" id="ci">
+                            <input type="text" class="material-control tooltips-general" placeholder="Ej: 6549875" pattern="[0-9]{1,50}" required="" maxlength="10" data-toggle="tooltip" data-placement="top" title="Ingrese su numero de carnet de identidad" name="ci" id="ci">
                             <span class="highlight"></span>
                             <span class="bar"></span>
                             <label>Ingrese su CI</label>

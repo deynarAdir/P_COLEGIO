@@ -19,6 +19,7 @@ class CreateSalariesTable extends Migration
             $table->date('date');
             $table->integer('total');
             $table->string('observation',100);
+            $table->string('invoice_number');
             $table->integer('bond');
             $table->timestamps();
 

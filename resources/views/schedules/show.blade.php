@@ -6,6 +6,15 @@
     </div>
 </div>
 <div class="container-fluid">
+    <div class="row">
+        <div class="col-xs-12 lead">
+            <ol class="breadcrumb">
+              <li><a href="{{ route('schedulesPersonal.index') }}">Volver</a></li>
+          </ol>
+      </div>
+  </div>
+</div>
+<div class="container-fluid">
     <h2 class="text-center all-tittles" style="clear: both; margin: 25px 0;">Detalle de ingreso y salida</h2>
     <div class="table-responsive">
         <div class="div-table" style="margin:0 !important;">

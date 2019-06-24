@@ -26,12 +26,20 @@
         <div class="row">
             <div class="col-md-12 col-md-10 col-md-offset-1">
                 <div class="row">
-                    <div class="col-md-6 col-md-offset-3"><br><br>
+                    <div class="col-md-6"><br><br>
                         <div class="group-material">
                             <input type="text" class="material-control tooltips-general" placeholder="Ej: 6549875" pattern="[0-9 ]{1,50}" required="" maxlength="10" data-toggle="tooltip" data-placement="top" title="Ingrese su numero de carnet de identidad" name="ci" id="ci">
                             <span class="highlight"></span>
                             <span class="bar"></span>
                             <label>Ingrese su CI</label>
+                        </div>
+                    </div>
+                    <div class="col-md-6"><br><br>
+                        <div class="group-material">
+                            <input type="text" class="material-control tooltips-general" placeholder="Entre 0 y 1" pattern="[0-1]{1,50}"  maxlength="1" data-toggle="tooltip" data-placement="top" title="Ingrese una cantidad" name="extra" id="extra">
+                            <span class="highlight"></span>
+                            <span class="bar"></span>
+                            <label>Actividades extras</label>
                         </div>
                     </div>
                 </div>
@@ -77,25 +85,30 @@
 
             ci=$("#ci").val()
             if(ci!="" ){
-                event.preventDefault();
-                var formId = '#frmA';
-                $.ajax({
-                    url: $(formId).attr('action'),
-                    type: $(formId).attr('method'),
-                    data: $(formId).serialize(),
-                    dataType: 'json',
-                    success: function (msg) {
+                ex = $("#extra").val();
+                if(ex=="" || ex==0 || ex==1){
+                    event.preventDefault();
+                    var formId = '#frmA';
+                    $.ajax({
+                        url: $(formId).attr('action'),
+                        type: $(formId).attr('method'),
+                        data: $(formId).serialize(),
+                        dataType: 'json',
+                        success: function (msg) {
 
-                        $('#alert').html(msg.message);
-                        $('#alert').show();
-                    },
-                    error: function(){
-                        console.log('Error');
-                    }
-                });
-                limpiar();
+                            $('#alert').html(msg.message);
+                            $('#alert').show();
+                        },
+                        error: function(){
+                            console.log('Error');
+                        }
+                    });
+                    limpiar();
+                }else{
+                    alert('El formato del campo actividades extras es invalido');
+                }
             }else{
-                alert("Ingrese su CI para marcar su asistencia");
+                alert("Ingrese su CI para marcar su salida");
             }
         });
 
