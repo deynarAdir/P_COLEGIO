@@ -9,7 +9,7 @@
             <figure>
                 <img src="{!! asset('assets/assets/img/logo.png') !!}" alt="Biblioteca" class="img-responsive center-box" style="width:55%;">
             </figure>
-            <p class="text-center" style="padding-top: 15px;">Sistema Bibliotecario</p>
+            <p class="text-center" style="padding-top: 15px;">Sistema Academico</p>
         </div>
         <div class="full-reset nav-lateral-list-menu">
             <ul class="list-unstyled">

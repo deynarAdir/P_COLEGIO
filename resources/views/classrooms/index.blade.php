@@ -1,4 +1,6 @@
-@extends('layouts.app')
+
+
+, @extends('layouts.app')
 @section('content')
 <div class="container">
     <div class="page-header">
@@ -60,6 +62,7 @@
                 </div>
 	        </div>
 	    @endforeach
+      
     </div>                  
 </div>
 {{-- Modal Delete --}}
