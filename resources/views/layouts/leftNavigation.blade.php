@@ -3,13 +3,13 @@
     <div class="full-reset container-menu-movile custom-scroll-containers">
         <div class="logo full-reset all-tittles">
             <i class="visible-xs zmdi zmdi-close pull-left mobile-menu-button" style="line-height: 55px; cursor: pointer; padding: 0 10px; margin-left: 7px;"></i> 
-            sistema bibliotecario
+            Sistema Academico
         </div>
         <div class="full-reset" style="background-color:#2B3D51; padding: 10px 0; color:#fff;">
             <figure>
                 <img src="assets/assets/img/logo.png" alt="Biblioteca" class="img-responsive center-box" style="width:55%;">
             </figure>
-            <p class="text-center" style="padding-top: 15px;">Sistema Bibliotecario</p>
+            <p class="text-center" style="padding-top: 15px;">Sistema Academico</p>
         </div>
         <div class="full-reset nav-lateral-list-menu">
             <ul class="list-unstyled">

@@ -2,7 +2,7 @@
 @section('content')
 <div class="container">
 	    <div class="page-header">
-	      <h1 class="all-tittles">Sistema bibliotecario <small>Inicio</small></h1>
+	      <h1 class="all-tittles">Sistema Academico<small>Inicio</small></h1>
 	    </div>
 	</div>
 	<section class="full-reset text-center" style="padding: 40px 0;">
@@ -29,8 +29,8 @@
 	            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 	            <h4 class="modal-title text-center all-tittles">ayuda del sistema</h4>
 	        </div>
+	            Desarrolladores de la universidad Franz Tamayo .
 	        <div class="modal-body">
-	            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore dignissimos qui molestias ipsum officiis unde aliquid consequatur, accusamus delectus asperiores sunt. Quibusdam veniam ipsa accusamus error. Animi mollitia corporis iusto.
 	        </div>
 	        <div class="modal-footer">
 	            <button type="button" class="btn btn-primary" data-dismiss="modal"><i class="zmdi zmdi-thumb-up"></i> &nbsp; De acuerdo</button>
