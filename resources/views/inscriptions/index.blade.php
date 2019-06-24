@@ -30,8 +30,6 @@
 
                             </select>
                     </div>
-
-
                  <div class="x_content">
                                 <div class="group-material">
                                         <input value="1" type="checkbox" class="material-control tooltips-general" placeholder="ej: 7485461" required="" maxlength="70" data-toggle="tooltip" data-placement="top" name="ci_photocopy" title="Ingresa el numero telefonico del estudiante">
