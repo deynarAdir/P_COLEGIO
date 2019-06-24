@@ -34,20 +34,7 @@ class RolsTableSeeder extends Seeder
         ]);
         Rol::create([
             'description1' => 'Administrativo',
-            'description2' => 'Docente',
-        ]);
-        Rol::create([
-            'description1' => 'Administrativo',
             'description2' => 'Secretaria',
         ]);
-        Rol::create([
-            'description1' => 'Estudiante',
-            'description2' => 'Estudiante',
-        ]);
-        Rol::create([
-            'description1' => 'Tutor',
-            'description2' => 'Tutor',
-        ]);
-
     }
 }
