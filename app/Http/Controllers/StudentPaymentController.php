@@ -68,7 +68,7 @@ class StudentPaymentController extends Controller
             $studentFee->state = 0;
             $studentFee->save();
         }
-        return ['id' => $payment->idpayment]; 
+        return ['id' => $payment->idpayment];
     }
     public function pdf($id){
         $payment = Payment::join('users','payments.id_student','=','users.iduser')->select('payments.nit_ci','payments.date','payments.invoice_series','payments.invoice_number','payments.total_payment','payments.state','users.name','users.paternal','users.maternal','users.ci','users.address','users.phone','users.email','payments.idpayment')

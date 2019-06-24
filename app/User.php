@@ -10,6 +10,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 class User extends Authenticatable
 {
     use Notifiable;
+    protected $table = 'users';
     protected $primaryKey = 'iduser';
 
     /**
@@ -39,6 +40,9 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+    public function teachers(){
+        return $this->hasMany('App\Teacher','id_user');
+    }
     public function rol(){
         return $this->belongsTo(Rol::class,'id_rol','idrol');
     }
@@ -50,5 +54,6 @@ class User extends Authenticatable
     public function student(){
         return $this->hasMany(Student::class,'id_user','iduser');
     }
+
 
 }

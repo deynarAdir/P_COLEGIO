@@ -8,4 +8,8 @@ class Teacher extends Model
 {
     protected $table = 'teachers';
     protected $primaryKey = 'idteacher';
+
+    public function user(){
+    	return $this->belongsTo('App\User','id_user');
+    }
 }

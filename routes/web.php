@@ -92,6 +92,8 @@ Route::get('email/resend', 'Auth\VerificationController@resend')->name('verifica
 
 Route::resource('monthly','MonthlyPaymentController');
 
+Route::resource('teacher', 'TeacherController');
+
 Route::resource('parallels','ParallelController');
 
 Route::resource('degrees','DegreeController');
@@ -111,3 +113,27 @@ Route::resource('notes','NotesController');
 Route::resource('subjectteacherdetail','SubjectTeacherDetailController');
 
 Route::resource('subjects','SubjectController');
+Route::get('pago/pdf/{id}','StudentPaymentController@pdf');
+Route::get('pagos/detalle/{id}','StudentPaymentController@detallePago');
+
+Route::resource('secretary','SecretaryController');
+
+Route::resource('treasurer','TreasurerController');
+
+Route::get('schedulePersonal/create/{id}','SchedulesController@create')->name('schedulesPersonal.create');
+Route::resource('schedulesPersonal','SchedulesController', ['except' => ['create']]);
+
+Route::get('assistancePersonal/createExit','AdminControlController@createEx')->name('assistancePersonal.createOut');
+
+Route::post('assistancePersonal/createExit','AdminControlController@storeExit')->name('assistancePersonal.storeOut');
+
+Route::resource('assistancePersonal','AdminControlController');
+
+Route::resource('salary', 'SalaryController');
+
+Route::get('get/personal/{ci}','SalaryController@getPersonal');
+
+Route::get('get/discount/{ci}','SalaryController@getDiscount');
+
+Route::get('get/bonus/{ci}','SalaryController@getBonus');
+Route::get('get/salary/{ci}','SalaryController@getSalary');
