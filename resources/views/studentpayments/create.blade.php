@@ -44,19 +44,6 @@
               <span class="bar"></span>
               <label>Estudiante:</label>
             </div>
-            <div class="col-md-3 col-sm-12">
-              <div class="group-material">
-                  <input type="text" class="material-control tooltips-general" placeholder="Introduzca el numero de comprobante" pattern="[0-9-]{1,10}" required="" maxlength="10" data-toggle="tooltip" data-placement="top" title="Solamente números y guiones, 10 dígitos" name="invoice_number" id="invoice_number">
-                  <span class="highlight"></span>
-                  <span class="bar"></span>
-                  <label>Numero de la Factura:</label>
-                  <span class="text-danger" id="error_invoice_number"></span>
-              </div>
-            </div>
-            <div class="col-md-4 col-sm-12">
-                <div class="group-material">
-                  <label>Ver mensualidades:</label>
-               </div>
           </div>
           <div class="col-md-4 col-sm-12 col-12">
             <div class="group-material">
@@ -220,7 +207,6 @@
         console.log(data.feeStudent.data);
         descuento = data.discount;
         for (var i = 0;i<data.feeStudent.data.length;i++) {
-<<<<<<< HEAD
             juntar+=`<tr>
               <td> ${data.feeStudent.data[i].idstudent_fee} </td>
               <td> ${data.feeStudent.data[i].description} cuota(s) </td>
@@ -235,22 +221,6 @@
                     <i class="glyphicon glyphicon-plus"></i>
                 </button>
               </td>
-=======
-          juntar+=`<tr>
-          <td> ${data.feeStudent.data[i].idstudent_fee} </td>
-          <td> ${data.feeStudent.data[i].description} </td>
-          <td> ${data.feeStudent.data[i].start_date} </td>
-          <td> ${data.feeStudent.data[i].end_date} </td>
-          <td> ${data.feeStudent.data[i].price} </td>
-          <td>
-          <button type="button" class="btn btn-success btn-xs seleccionado modal-ml"
-          data-id="${data.feeStudent.data[i].idstudent_fee}"
-          data-description="${data.feeStudent.data[i].description}"
-          data-precio="${data.feeStudent.data[i].price}">
-          <i class="glyphicon glyphicon-plus"></i>
-          </button>
-          </td>
->>>>>>> c0a2e9dfe2102529bb6909464a82426d96bf140d
           </tr>`;
         }
         $('#tabla-mensualidades').html(juntar);
