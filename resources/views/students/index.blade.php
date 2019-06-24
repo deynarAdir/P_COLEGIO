@@ -9,7 +9,7 @@
     <div class="row">
         <div class="col-xs-12 lead">
             <ol class="breadcrumb">
-                <li><a href="{{ route('inscriptions.create') }}">Nueva Inscripción</a></li>
+                <li><a href="{{ route('inscriptions.index') }}">Nueva Inscripción</a></li>
                 <li class="active">Listado de Grados</li>
             </ol>
         </div>
