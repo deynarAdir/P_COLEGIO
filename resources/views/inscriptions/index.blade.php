@@ -138,7 +138,7 @@
                         </div>
 
                         <div class="col-md-4 col-sm-12 group-material">
-                                <input type="text" class="material-control tooltips-general" placeholder="ej: MASCULINO" required="" maxlength="70" data-toggle="tooltip" data-placement="top" name="age" title="Ingresa la edad del estudiate">
+                                <input type="number" class="material-control tooltips-general" placeholder="ej: MASCULINO" required="" maxlength="70" data-toggle="tooltip" data-placement="top" name="age" title="Ingresa la edad del estudiate">
                                 <span class="highlight"></span>
                                 <span class="bar"></span>
                                 <label>EDAD</label>
