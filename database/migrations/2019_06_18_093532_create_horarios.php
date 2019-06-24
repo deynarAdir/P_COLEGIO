@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateSalariesTable extends Migration
+class CreateHorarios extends Migration
 {
     /**
      * Run the migrations.
@@ -13,17 +13,16 @@ class CreateSalariesTable extends Migration
      */
     public function up()
     {
-        Schema::create('salaries', function (Blueprint $table) {
-            $table->increments('idsalary');
+        Schema::create('horarios', function (Blueprint $table) {
+            $table->bigIncrements('idhorario');
             $table->integer('id_user')->unsigned();
-            $table->date('date');
-            $table->integer('total');
-            $table->string('observation',100);
-            $table->string('invoice_number');
-            $table->integer('bond');
+            $table->integer('id_day')->unsigned();
+            $table->time('hour_entry');
+            $table->time('hour_exit');
             $table->timestamps();
 
             $table->foreign('id_user')->references('iduser')->on('users');
+            $table->foreign('id_day')->references('idday')->on('days');
         });
     }
 
@@ -34,6 +33,6 @@ class CreateSalariesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('salaries');
+        Schema::dropIfExists('horarios');
     }
 }

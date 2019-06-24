@@ -17,7 +17,7 @@ class CreateSecretariesTable extends Migration
             $table->increments('idsecretary');
             $table->integer('id_user')->unsigned();
             $table->string('num_job_certificate',45);
-            $table->string('num_languade_diploma',45)->nullable();
+            $table->string('name_title',45);
             $table->string('cv',45);
             $table->timestamps();
 
